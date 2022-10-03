@@ -451,4 +451,4 @@ ec.courses << [cs1, sci2, math3, ela4, his5, art6]
 
 
 puts "✅ Done seeding!"
-Footer
+
