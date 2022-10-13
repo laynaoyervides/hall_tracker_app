@@ -2,37 +2,54 @@ puts "🌱 Seeding spices..."
 
 # Seed your database here
 
-mso = Instructor.create (
+mso = Instructor.create! (
     {
-        username: "Ms. Oreo"
+        username: "Ms. Oreo",
+        password: "candylady1",
+        email: "oreo@school.com"
     }
 )
 
-mrs = Instructor.create (
+mrs = Instructor.create! (
     {
-        username: "Mr. Snickers"
+        username: "Mr. Snickers",
+        password: "candyman1",
+        email: "snickers@school.com"
+
     }
 )
 
-msg = Instructor.create(
+msg = Instructor.create! (
     {
-        username: "Ms. Goodbar"
+        username: "Ms. Goodbar",
+        password: "candygirl1",
+        email: "goodbar@school.com"
+
     }
 )
 
-mrp = Instructor.create (
+mrp = Instructor.create! (
     {
-        username: "Mr. Payday"
+        username: "Mr. Payday",
+        password: "candyman2",
+        email: "payday@school.com"
+
+
     }
 )
-msk = Instructor.create (
+msk = Instructor.create!(
     {
-        username: "Ms. KitKat" 
+        username: "Ms. KitKat",
+        password: "candygirl2",
+        email: "kitkat@school.com"
 }
     )
-mrr = Instructor.create (
+mrr = Instructor.create!(
     {
-        username: "Mr. Reeses"
+        username: "Mr. Reeses",
+        password: "candyboy1",
+        email: "reeses@school.com"
+
     }
 )
 
