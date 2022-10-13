@@ -7,6 +7,8 @@ class InstructorsController < ApplicationController
         else
             render json: { error: 'No active session'}, status: :unauthorized
         end
+    end
+
     
     #post /signup
     def create
@@ -17,6 +19,7 @@ class InstructorsController < ApplicationController
         else
             render json: {error: instructor.errors }, status: :unprocessable_entity
         end
+    end
 
     private
 
