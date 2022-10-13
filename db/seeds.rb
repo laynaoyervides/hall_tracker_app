@@ -4,35 +4,35 @@ puts "🌱 Seeding spices..."
 
 mso = Instructor.create (
     {
-        name: "Ms. Oreo"
+        username: "Ms. Oreo"
     }
 )
 
 mrs = Instructor.create (
     {
-        name: "Mr. Snickers"
+        username: "Mr. Snickers"
     }
 )
 
 msg = Instructor.create(
     {
-        name: "Ms. Goodbar"
+        username: "Ms. Goodbar"
     }
 )
 
 mrp = Instructor.create (
     {
-        name: "Mr. Payday"
+        username: "Mr. Payday"
     }
 )
 msk = Instructor.create (
     {
-    name: "Ms. KitKat" 
+        username: "Ms. KitKat" 
 }
     )
 mrr = Instructor.create (
     {
-        name: "Mr. Reeses"
+        username: "Mr. Reeses"
     }
 )
 
