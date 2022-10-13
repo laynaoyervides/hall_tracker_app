@@ -1,3 +1,3 @@
-class InstructorSerializer << ActiveModel::Serializer
+class InstructorSerializer < ActiveModel::Serializer
     attributes :id, :username, :email
 end

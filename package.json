@@ -1,5 +1,30 @@
 {
+  "name": "hall_pass_app",
+  "description": "Build scripts for Heroku",
+  "engines": {
+    "node": "16.x"
+  },
+  "scripts": {
+    "build": "npm install --prefix client && npm run build --prefix client",
+    "clean": "rm -rf public",
+    "deploy": "cp -a client/build/. public/",
+    "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
   "dependencies": {
-    "react-router-dom": "^6.4.1"
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@fontsource/righteous": "^4.5.7",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.10.2",
+    "@mui/material": "^5.10.9",
+    "material-ui-colors": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.1",
+    "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.5"
+  },
+  "devDependencies": {
+    "web-vitals": "^3.0.0"
   }
 }
