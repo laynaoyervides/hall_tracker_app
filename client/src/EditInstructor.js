@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 
 function EditInstructor ({instructor, onUpdateInstructor}) {
-    const {id, name} = instructor;
-    const [updatedName, setUpdatedName] = useState(name);
+    const {id, username} = instructor;
+    const [updatedUsername, setUpdatedUsername] = useState(username);
 
     function handleEditForm(e) {
         e.preventDefault();
 
         // PATCH request
 
-        fetch(`http://localhost:9292/instructors/${id}`, {
+        fetch(`http://localhost:3000/instructors/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({name: updatedName}),
+            body: JSON.stringify({username: updatedUsername}),
     })
             .then((resp)=> resp.json())
             .then((updatedInstructor)=>onUpdateInstructor(updatedInstructor));
@@ -22,8 +22,8 @@ function EditInstructor ({instructor, onUpdateInstructor}) {
 
     return (
         <form onSubmit={handleEditForm}>
-            <input id="name" type="text" name="name" value={updatedName}
-            onChange={(e)=> setUpdatedName(e.target.value)} />
+            <input id="name" type="text" name="name" value={updatedUsername}
+            onChange={(e)=> setUpdatedUsername(e.target.value)} />
                   <input type="submit" value="Save" />
 
         </form>

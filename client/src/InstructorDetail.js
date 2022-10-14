@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import EditInstructor from "./EditInstructor";
 
 function InstructorDetail ({instructorName, deleteInstructor, instructor, onUpdateInstructor }) {
-  const {name, id} = instructor;
+  const {username, id} = instructor;
   const [isEditing, setIsEditing] =useState(false);
 
   function handleDelete () {
     deleteInstructor(id);
-    fetch(`http://localhost:9292/instructors/${id}`, {
+    fetch(`http://localhost:3000/instructors/${id}`, {
       method: "DELETE",
     });
   };
@@ -47,7 +47,7 @@ function InstructorDetail ({instructorName, deleteInstructor, instructor, onUpda
                 { isEditing ?  (
                   <EditInstructor instructor={instructor} onUpdateInstructor={handleInstructorUpdate}/>
                 ) :
-                ( <h3>{name}</h3>)
+                ( <h3>{username}</h3>)
 }
                 <button onClick={() => setIsEditing((isEditing) => !isEditing)}><h5>EDIT</h5></button>
                 <button onClick={handleDelete}><h5>DELETE</h5></button>
