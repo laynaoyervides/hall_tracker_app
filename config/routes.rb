@@ -14,10 +14,14 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get "/learners", to: "learners#index"
+  get "/learnerdetail", to:"learners#show"
+  patch "/editlearner", to: "learners#update"
+  post "/editlearner", to:"learners#create"
+  delete "/deletelearner", to: "learners#destroy"
 
   get "/courses", to: "courses#index"
-  patch "editcourse", to: "courses#update"
   get "/coursedetail", to:"courses#show"
+  patch "/editcourse", to: "courses#update"
   post "/editcourse", to:"courses#create"
   delete "/deletecourse", to: "courses#destroy"
 

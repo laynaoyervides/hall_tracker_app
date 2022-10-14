@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import EditCourse from "./EditCourse";
-import styles from "./CourseDetail.css"
 
 function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
     const{id, course_name, class_period } = course;
@@ -8,7 +7,7 @@ function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
     
     function handleDelete () {
         deleteCourse(id);
-        fetch(`http://localhost:9292/courses/${id}` , {
+        fetch("/deletecourse" , {
             method: "DELETE",
         });
     };
@@ -17,7 +16,7 @@ function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
         onUpdateCourse(updatedCourse);
       };
     return (
-        <div className={styles.courseDetail}>
+        <div>
             { isEditing ? (
                 <EditCourse course={course} onUpdateCourse={handleCourseUpdate} instructors={instructors}/>
                 ) :
