@@ -9,6 +9,10 @@ import React, {useEffect, useState} from "react"
 //import subComponents
 import NavBar from "./NavBar";
 import Login from './Login';
+import Enrollments from './Enrollments'
+import Courses from './Courses';
+import Learners from './Learners'
+import Activity from './Activity'
 
 function App() {  
 
@@ -49,7 +53,14 @@ function handleLogout () {
     <div className="App">
       <NavBar />
       <Routes>
-      <Route path="/login" instructor={instructor} element={<Login onLogin={handleLogin} onLogout={handleLogout}/>} />
+      <Route path="/login" element={<Login instructor={instructor} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
+      <Route path='/courses' element={<Courses />} />
+      <Route path="/enrollments" element={<Enrollments />} />
+      <Route path="*" element={<h1>404 not found</h1>}/>
+      <Route path="/learners" element={<Learners />} />
+      <Route path="/activity" element={<Activity/>} />
+
+      
       </Routes>
     </div>
   //  </ThemeProvider>
