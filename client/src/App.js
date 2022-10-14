@@ -13,6 +13,7 @@ import Enrollments from './Enrollments'
 import Courses from './Courses';
 import Learners from './Learners'
 import Activity from './Activity'
+import { Home } from '@mui/icons-material';
 
 function App() {  
 
@@ -53,14 +54,13 @@ function handleLogout () {
     <div className="App">
       <NavBar />
       <Routes>
+      <Route exact path="/" element={<Home />} />    
       <Route path="/login" element={<Login instructor={instructor} handleLogin={handleLogin} handleLogout={handleLogout}/>}/>
       <Route path='/courses' element={<Courses />} />
       <Route path="/enrollments" element={<Enrollments />} />
-      <Route path="*" element={<h1>404 not found</h1>}/>
       <Route path="/learners" element={<Learners />} />
       <Route path="/activity" element={<Activity/>} />
-
-      
+      <Route path="*" element={<h1>404 not found</h1>}/>
       </Routes>
     </div>
   //  </ThemeProvider>
