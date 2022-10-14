@@ -1,4 +1,6 @@
 import React, {useState} from "react"
+import NewCourse from "./NewCourse";
+import CourseDetail from "./CourseDetail";
 
 function Courses() {
     const [courses, setCourses] = useState([])

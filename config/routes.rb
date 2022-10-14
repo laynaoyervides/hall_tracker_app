@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/courses", to: "courses#index"
   get "/learners", to: "learners#index"
+  patch "editcourse", to: "courses#update"
 
   Rails.application.routes.draw do
     # route to test your configuration
