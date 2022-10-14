@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   post "/signup", to: "instructors#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
-  get "/courses" to: "courses#show"
+  get "/courses", to: "courses#index"
+  get "/learners", to: "learners#index"
 
   Rails.application.routes.draw do
     # route to test your configuration
