@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :courses 
+  resources :learners
   
   
   
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   post "/signup", to: "instructors#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  get "/courses" to: "courses#show"
 
   Rails.application.routes.draw do
     # route to test your configuration
