@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get "/courses", to: "courses#index"
   patch "editcourse", to: "courses#update"
   get "/coursedetail", to:"courses#show"
+  post "/editcourse", to:"courses#create"
+  delete "/deletecourse", to: "courses#destroy"
 
   Rails.application.routes.draw do
     # route to test your configuration

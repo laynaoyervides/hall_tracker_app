@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
     def show            
         render json: @current_course
     end
+
 # "/editcourse"
   def update
     if @course.update(course_params)
@@ -18,6 +19,16 @@ class CoursesController < ApplicationController
       render json: @course.errors, status: :unprocessable_entity
     end
   end
-        
 
+  #POST course "/editcourse"
+    def create
+        course = Course.create(course_params)
+        render json: course, status: accepted
+    end
+
+    #DELETE course "/deletecourse"
+    def destroy
+        @course.destroy
+    end
+    
 end
