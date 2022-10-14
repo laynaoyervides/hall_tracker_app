@@ -8,7 +8,7 @@ function Enrollments () {
 
     useEffect (
         () => {
-            fetch(`http://localhost:3000/instructors`)
+            fetch(`/instructors`)
             .then((resp) => resp.json())
             .then((instructor)=> setInstructors(instructor));
         }, []);
