@@ -1,8 +1,8 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import NewCourse from "./NewCourse";
 import CourseDetail from "./CourseDetail";
 
-function Courses() {
+function Courses({instructors}) {
     const [courses, setCourses] = useState([])
 
      //get list of courses

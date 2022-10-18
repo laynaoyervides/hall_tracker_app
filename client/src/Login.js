@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Box, Typography, TextField, Button} from "@mui/material"
-import {useTheme} from "@mui/material/styles"
+//import {useTheme} from "@mui/material/styles"
 
 function Login ({onLogin}) {
-        const theme = useTheme();
+       // const theme = useTheme();
         const [isSignup, setIsSignup] =useState(false);
         const [inputs, setInputs] =useState({
             
@@ -93,7 +93,7 @@ function Login ({onLogin}) {
                 <Button 
                     type="submit"
                     variant="contained" 
-                    color="warning" 
+                    color="secondary" 
                     sx={{marginTop: 3, borderRadius: 3}}
                     >
                     {isSignup ? "SIGNUP" : "LOGIN"}

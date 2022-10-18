@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function EditCourse ({course, onUpdateCourse, instructors}) {
-    const {id, course_name, class_period}=course;
+    const {course_name, class_period}=course;
     const[updatedName, setUpdatedName]=useState(course_name);
     const[updatedPeriod, setUpdatedPeriod]= useState(class_period);
     const [instructor, setInstructor]=useState("")

@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route, BrowserRouter} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 import React, {useState, useEffect } from "react"
 
 //Material UI
@@ -53,22 +53,18 @@ function handleLogout () {
 } 
 
   return (
-    <React.StrictMode>
       <ThemeProvider theme={theme}>
-        <NavBar />
-        <BrowserRouter>
+        <NavBar instructor={instructor} handleLogout={handleLogout}/>
         <Routes>
             <Route exact path="/" element={<Home />} />    
-            <Route path="/login" element={<Login />}/>
+            <Route path="/login" element={<Login handleLogin={handleLogin} />}/>
             <Route path='/courses' element={<Courses />} />
             <Route path="/enrollments" element={<Enrollments />} />
             <Route path="/learners" element={<Learners />} />
             <Route path="/activity" element={<Activity/>} />
             <Route path="*" element={<h1>404 not found</h1>}/>
         </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </React.StrictMode>
+    </ThemeProvider>
   );
 }
 
