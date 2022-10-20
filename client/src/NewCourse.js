@@ -25,7 +25,7 @@ function NewCourse ({instructors, addNewCourse}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("/createcourse", configObj)
+        fetch("http://localhost:3000/createcourse", configObj)
         .then ((resp) => resp.json())
         .then ((course) => {addNewCourse(course)
         });

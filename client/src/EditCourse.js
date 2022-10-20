@@ -16,7 +16,7 @@ function EditCourse ({course, onUpdateCourse, instructors}) {
     e.preventDefault();
 
     // Make a PATCH fetch request to update a single donation
-    fetch("/editcourse", {
+    fetch("http://localhost:3000/editcourse", {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

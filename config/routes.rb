@@ -16,14 +16,20 @@ Rails.application.routes.draw do
   get "/learners", to: "learners#index"
   get "/learnerdetail", to:"learners#show"
   patch "/editlearner", to: "learners#update"
-  post "/editlearner", to:"learners#create"
+  post "/createlearner", to:"learners#create"
   delete "/deletelearner", to: "learners#destroy"
 
   get "/courses", to: "courses#index"
   get "/coursedetail", to:"courses#show"
   patch "/editcourse", to: "courses#update"
-  post "/editcourse", to:"courses#create"
+  post "/createcourse", to:"courses#create"
   delete "/deletecourse", to: "courses#destroy"
+
+  get "enrollments", to: "enrollments#index"
+  post "createenrollment", to: "enrollments#create"
+  patch "editenrollment", to:"enrollments#update"
+  delete "deleteenrollment", to: "enrollments#destroy"
+
 
   Rails.application.routes.draw do
     # route to test your configuration

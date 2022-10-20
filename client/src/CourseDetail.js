@@ -7,7 +7,7 @@ function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
     
     function handleDelete () {
         deleteCourse(id);
-        fetch("/deletecourse" , {
+        fetch("http://localhost:3000/deletecourse" , {
             method: "DELETE",
         });
     };
