@@ -6,7 +6,8 @@ mso = Instructor.create! (
     {
         username: "Ms. Oreo",
         password: "candylady1",
-        email: "oreo@school.com"
+        email: "oreo@school.com",
+        admin: 1
     }
 )
 
@@ -14,7 +15,8 @@ mrs = Instructor.create! (
     {
         username: "Mr. Snickers",
         password: "candyman1",
-        email: "snickers@school.com"
+        email: "snickers@school.com",
+        admin: 0
 
     }
 )
@@ -23,7 +25,8 @@ msg = Instructor.create! (
     {
         username: "Ms. Goodbar",
         password: "candygirl1",
-        email: "goodbar@school.com"
+        email: "goodbar@school.com",
+        admin: 0
 
     }
 )
@@ -32,7 +35,8 @@ mrp = Instructor.create! (
     {
         username: "Mr. Payday",
         password: "candyman2",
-        email: "payday@school.com"
+        email: "payday@school.com",
+        admin: 0
 
 
     }
@@ -41,14 +45,16 @@ msk = Instructor.create!(
     {
         username: "Ms. KitKat",
         password: "candygirl2",
-        email: "kitkat@school.com"
+        email: "kitkat@school.com",
+        admin: 0
 }
     )
 mrr = Instructor.create!(
     {
         username: "Mr. Reeses",
         password: "candyboy1",
-        email: "reeses@school.com"
+        email: "reeses@school.com",
+        admin: 0
 
     }
 )
