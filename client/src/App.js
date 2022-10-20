@@ -3,7 +3,7 @@ import {Routes, Route} from "react-router-dom"
 import React, {useState, useEffect } from "react"
 
 //Material UI
-import {createTheme, ThemeProvider} from '@mui/material'
+import {createTheme, ThemeProvider} from '@mui/material/styles'
 import{cyan, yellow} from 'material-ui-colors';
  
 //import subComponents
@@ -36,7 +36,7 @@ function App() {
   const [instructor, setInstructor] = useState(null);
 
   useEffect(() => {
-    fetch("/me")
+    fetch("http://localhost:3000/me")
     .then((resp)=> {
     if (resp.ok) {
       resp.json().then((instructor) => setInstructor(instructor));

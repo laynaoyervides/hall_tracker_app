@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import EditInstructor from "./EditInstructor";
 
-function InstructorDetail ({instructorName, deleteInstructor, instructor, onUpdateInstructor }) {
+function InstructorDetail ({ deleteInstructor, instructor, onUpdateInstructor }) {
   const {username, id} = instructor;
   const [isEditing, setIsEditing] =useState(false);
 

@@ -7,7 +7,7 @@ function Courses({instructors}) {
 
      //get list of courses
      useEffect ( ()  => {
-        fetch("/courses")
+        fetch("http://localhost:3000/courses")
         .then ((r) => r.json())
         .then ((courses) => setCourses(courses));
     }, []);
@@ -48,6 +48,7 @@ function Courses({instructors}) {
                 courses={courses}
                 course={course}
                 instructors={instructors}
+                learners={course.learners}
                 />
             ))
         }

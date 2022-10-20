@@ -20,7 +20,7 @@ function Login ({onLogin}) {
         }
         const handleSubmit = (e) => {
             e.preventDefault();
-            fetch ("http://localhost:3000/login", {
+            fetch ("/login", {
                 method:"POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -29,7 +29,7 @@ function Login ({onLogin}) {
             })
              .then ((r) => {
                 if (r.ok) {
-                r.json().then((user) => onLogin(user));
+                r.json().then((instructor) => onLogin(instructor));
                 }
             });
         }
