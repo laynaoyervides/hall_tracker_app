@@ -1,9 +1,14 @@
 import React from "react"
 
-function CourseList () {
+function CourseList ({course}) {
+
+    const {id, course_name, class_period} = course;
+
     return (
         <div>
-            <h1>change this content</h1>
+            <h3>Course Name: {course_name}</h3>
+            <br></br>
+            <h3>Class Period: {class_period}</h3>
         </div>
     )
 }

@@ -18,6 +18,7 @@ import Home from './Home';
 
 
 function App() {  
+
  
 //set theme colors to cyan primary and secondary is yellow 400 each
  const theme = createTheme({

@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import InstructorsList from "./InstructorsList";
-import CourseEnrollment from "./CourseEnrollment";
+import CourseList from "./CourseList";
 
 function Enrollments () {
 
-    const [instructors, setInstructors]=useState([]);
+    const [courses, setCourses]=useState([]);
 
     useEffect (
         () => {
-            fetch(`/instructors`)
+            fetch(`http://localhost:3000/courses`)
             .then((resp) => resp.json())
-            .then((instructor)=> setInstructors(instructor));
+            .then((courses)=> setCourses(courses));
         }, []);
 
     return (
@@ -18,15 +17,18 @@ function Enrollments () {
         <h1>Enrollments</h1>
             <div > 
                 <div > 
-                   <h2>Instructors</h2>
-                   <p>View, Add, Edit, or Delete an Instructor</p>
-                   <InstructorsList />
+                   <h2>Courses</h2>
+                   {courses.map((course)=>
+                    <CourseList 
+                    key={course.id}
+                    course={course}
+                    courseName = {course.course_name}
+                    classPeriod={course.class_period}
+                    />
+
+                   )}
                 </div>
-                <div>
-                     <h2>VIEW, ADD, EDIT OR DELETE A COURSE </h2>
-                        <CourseEnrollment instructors={instructors}/>
-                     <p>Find the student and delete their enrollment(...Coming Soon...)</p>
-                </div>
+                
             </div>        
         </div>
     )

@@ -38,6 +38,14 @@ function Learners () {
 
     return (
         <div>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+
                {learners.map((learner) => (
                 <LearnerDetail  
                 key={learner.id}
