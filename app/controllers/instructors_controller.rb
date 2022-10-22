@@ -1,5 +1,7 @@
 class InstructorsController < ApplicationController
-
+skip_before_action :confirm_authentication
+    
+    
     #get '/me'
     def show
         if current_instructor
@@ -8,6 +10,12 @@ class InstructorsController < ApplicationController
             render json: { error: 'No active session'}, status: :unauthorized
         end
     end
+
+    #get all instructors list
+    def index
+        @instructors = Instructor.all
+        render json: @instructor
+       end
 
     
     #post /signup

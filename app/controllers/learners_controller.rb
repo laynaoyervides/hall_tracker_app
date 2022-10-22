@@ -42,4 +42,9 @@ class LearnersController < ApplicationController
    def learner_params
      params.fetch(:learner, {})
    end
+
+   def authorize_instructor
+        instructor_can_modify = current_instructor.admin?
+    render json: { error: "You don't have permission to perform this action" }, status: :forbidden unless instructor_can_modify
+  end
 end

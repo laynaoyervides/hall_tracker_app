@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
 
-#"/courses"
+  skip_before_action :confirm_authentication
+  #"/courses"
         def index
          @courses = Course.all
          render json: @courses

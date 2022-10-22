@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  get "instructors", to: "instructors#index"
+
   get "/learners", to: "learners#index"
   get "/learnerdetail", to:"learners#show"
   patch "/editlearner", to: "learners#update"

@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
-
-    # post '/login'
+  
+  skip_before_action :confirm_authentication, only: [:create]
+ 
+  # post '/login'
     def create
     instructor = Instructor.find_by_username(params[:username])
       if instructor&.authenticate(params[:password])

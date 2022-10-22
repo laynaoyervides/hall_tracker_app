@@ -10,7 +10,7 @@ import{cyan, yellow} from 'material-ui-colors';
 import NavBar from "./NavBar";
 import Login from './Login';
 import Enrollments from './Enrollments';
-import Courses from './Courses';
+import Courses from './CourseCrud';
 import Learners from './Learners';
 import Activity from './Activity';
 import Home from './Home';
