@@ -1,15 +1,17 @@
 class CoursesController < ApplicationController
 
-  skip_before_action :confirm_authentication
-  #"/courses"
+skip_before_action :confirm_authentication
+
+
+#"/courses"
         def index
          @courses = Course.all
-         render json: @courses
+         render json: @courses, include: :learners
         end
 
 #"/coursedetail" GET courses/1
     def show            
-        render json: @current_course
+        render json: @current_course, include: :learners
     end
 
 # "/editcourse"
@@ -21,7 +23,7 @@ class CoursesController < ApplicationController
     end
   end
 
-  #POST course "/editcourse"
+  #POST course "/createcourse"
     def create
         course = Course.create(course_params)
         render json: course, status: accepted
@@ -32,4 +34,9 @@ class CoursesController < ApplicationController
         @course.destroy
     end
     
+
+    private
+    def course_params
+      params.permit(:course_name, :class_period, :instructor_id)
+    end
 end

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 
-function NewCourse ({instructors, addNewCourse}) {
+function NewCourse ({addNewCourse}) {
     const [course_name, setCourse_name] = useState("")
     const [class_period, setClass_period] = useState("")
-    const [instructor, setInstructor] = useState("");
+    //const [instructor, setInstructor] = useState("");
 
     const newCourse = {
         course_name,
         class_period,
-        instructor_id: instructor,
+    //    instructor_id: instructor,
         
     }
 
@@ -54,7 +54,7 @@ function NewCourse ({instructors, addNewCourse}) {
                     value={class_period}
                     onChange={(e)=> setClass_period(e.target.value)}
                     />
-                <label>Instructor
+                {/* <label>Instructor
                 <select
                     placeholder="Select an Instructor"
                     onChange={(e)=> setInstructor(e.target.value)}
@@ -67,7 +67,7 @@ function NewCourse ({instructors, addNewCourse}) {
                         </option>
                     ))}
                     </select>
-                </label>
+                </label> */}
         <button type="submit">Create Course</button>
         </form>
         </div>

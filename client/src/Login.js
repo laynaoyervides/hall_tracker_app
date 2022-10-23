@@ -65,7 +65,18 @@ function Login ({onLogin}) {
                 </Typography>
                 
                 {isSignup && (
-                 <TextField 
+
+                     <TextField 
+                    onChange={handleChange}
+                    name="email"
+                    value={inputs.email}
+                    margin="normal" type={'email'} 
+                    variant="outlined"
+                    placeholder="Email"/>
+                 
+                )}
+
+                <TextField 
                     onChange={handleChange}
                     name="username"
                     value={inputs.username}
@@ -73,15 +84,6 @@ function Login ({onLogin}) {
                     type={'text'} 
                     variant="outlined" 
                     placeholder="Username"/>
-                )}
-
-                <TextField 
-                    onChange={handleChange}
-                    name="email"
-                    value={inputs.email}
-                    margin="normal" type={'email'} 
-                    variant="outlined"
-                    placeholder="Email"/>
                 <TextField 
                     onChange={handleChange}
                     name="password"

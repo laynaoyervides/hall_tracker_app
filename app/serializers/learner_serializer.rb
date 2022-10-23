@@ -1,3 +1,3 @@
 class LearnerSerializer < ActiveModel::Serializer
-    resources :id, :name 
+    attributes :id, :name 
 end

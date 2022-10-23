@@ -5,7 +5,7 @@ skip_before_action :confirm_authentication
     #get '/me'
     def show
         if current_instructor
-            render json: current_instructor, status: :ok
+            render json: current_instructor, include: :courses, status: :ok
         else
             render json: { error: 'No active session'}, status: :unauthorized
         end
@@ -14,10 +14,11 @@ skip_before_action :confirm_authentication
     #get all instructors list
     def index
         @instructors = Instructor.all
-        render json: @instructor
+        render json: @instructors
        end
 
-    
+   
+
     #post /signup
     def create
         instructor = Instructor.create(instructor_params)

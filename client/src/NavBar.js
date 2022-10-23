@@ -5,7 +5,7 @@ import {AppBar, Toolbar, Typography, Tabs, Tab, Button} from '@mui/material';
 
 function NavBar({instructor, onLogout}) {
     function handleLogout() {
-        fetch("/logout", {
+        fetch("http://localhost:3000/logout", {
           method: "DELETE",
         }).then(() => onLogout());
       }
@@ -24,7 +24,6 @@ function NavBar({instructor, onLogout}) {
             <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/enrollments"><Tab label="Enrollments" value="3"/></Link>
             <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/activity"><Tab label="Activity" value="4"/></Link>
 
-        </Tabs>
 
         <header>
                             { instructor ? (
@@ -33,10 +32,12 @@ function NavBar({instructor, onLogout}) {
                                  <button onClick={handleLogout}>Logout</button>
                                 </div>
                                 ) : (
-                                    <Button sx={{padding: '10px'}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
+                                    <Button sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
                                     )
                             }
                         </header>
+                        </Tabs>
+
                     </Toolbar>
              </AppBar>
         </div>
