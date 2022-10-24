@@ -4,28 +4,17 @@ import { Box, Typography, TextField, Button} from "@mui/material"
 
 function Login ({onLogin}) {
        // const theme = useTheme();
-        const [isSignup, setIsSignup] =useState(false);
-        const [inputs, setInputs] =useState({
-            
-                username: "",
-                email: "",
-                password: "",
-
-            });
-        const handleChange = (e) => {
-            setInputs((prevState)=> ({
-                ...prevState,
-                [e.target.name] : e.target.value
-            }))
-        }
+        const [username, setUsername] = useState("");
+        const [password, setPassword] = useState("");
+        
         const handleSubmit = (e) => {
             e.preventDefault();
-            fetch ("http://localhost:3000/login", {
+            fetch ("/login", {
                 method:"POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({inputs}),
+                body: JSON.stringify({username, password}),
             })
              .then ((r) => {
                 if (r.ok) {
@@ -34,11 +23,6 @@ function Login ({onLogin}) {
             });
         }
             
-        
-        const resetState = () =>{
-            setIsSignup(!isSignup)
-            setInputs({username:"", email:"", password:""})
-        }
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -60,34 +44,20 @@ function Login ({onLogin}) {
                 variant="h2" 
                 padding={3} 
                 textAlign="center">
-                    {isSignup ? "SIGNUP" : "LOGIN"}
-        
+Login        
                 </Typography>
                 
-                {isSignup && (
-
-                     <TextField 
-                    onChange={handleChange}
-                    name="email"
-                    value={inputs.email}
-                    margin="normal" type={'email'} 
-                    variant="outlined"
-                    placeholder="Email"/>
-                 
-                )}
-
                 <TextField 
-                    onChange={handleChange}
+                    onChange={(e)=> setUsername(e.target.value)}
                     name="username"
-                    value={inputs.username}
-                    margin="normal" 
-                    type={'text'} 
-                    variant="outlined" 
+                    value={username}
+                    margin="normal" type={'username'} 
+                    variant="outlined"
                     placeholder="Username"/>
                 <TextField 
-                    onChange={handleChange}
+                    onChange={(e)=>setPassword(e.target.value)}
                     name="password"
-                    value={inputs.password}
+                    value={password}
                     margin="normal" 
                     type={'password'} 
                     variant="outlined"
@@ -98,15 +68,8 @@ function Login ({onLogin}) {
                     color="secondary" 
                     sx={{marginTop: 3, borderRadius: 3}}
                     >
-                    {isSignup ? "SIGNUP" : "LOGIN"}
-                    
-                </Button>
-                <Button 
-                onClick={resetState} 
-                sx={{ marginTop:3, borderRadius: 3}}
-                >
-                Change To {isSignup ? "Login" : "Signup"}
-                    </Button>                
+LOGIN                    
+                </Button>            
 
 </Box>
             </form>              

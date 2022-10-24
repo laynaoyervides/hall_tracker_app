@@ -7,7 +7,7 @@ function Learners () {
     const [learners, setLearners] = useState([])
 
     useEffect ( ()  => {
-        fetch("http://localhost:3000/learners")
+        fetch("/learners")
         .then ((r) => r.json())
         .then ((learners) => setLearners(learners));
     }, []);

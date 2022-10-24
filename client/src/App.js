@@ -14,7 +14,7 @@ import Courses from './CourseCrud';
 import Learners from './Learners';
 import Activity from './Activity';
 import Home from './Home';
-
+import SignUp from './SignUp'
 
 
 function App() {  
@@ -37,7 +37,7 @@ function App() {
   const [instructor, setInstructor] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/me")
+    fetch("/me")
     .then((resp)=> {
     if (resp.ok) {
       resp.json().then((instructor) => setInstructor(instructor));
@@ -45,9 +45,7 @@ function App() {
   });
 }, []); 
 
-function handleLogin(instructor) {
-  setInstructor(instructor);
-}
+
 
 function handleLogout () {
   setInstructor(null);
@@ -58,11 +56,13 @@ function handleLogout () {
         <NavBar instructor={instructor} handleLogout={handleLogout}/>
         <Routes>
             <Route exact path="/" element={<Home />} />    
-            <Route path="/login" element={<Login handleLogin={handleLogin} />}/>
+            <Route path="/login" element={<Login onLogin={setInstructor} />}/>
             <Route path='/courses' element={<Courses />} />
             <Route path="/enrollments" element={<Enrollments />} />
             <Route path="/learners" element={<Learners />} />
             <Route path="/activity" element={<Activity/>} />
+            <Route path="/signup" element={<SignUp onLogin={setInstructor}/>} />
+
             <Route path="*" element={<h1>404 not found</h1>}/>
         </Routes>
     </ThemeProvider>

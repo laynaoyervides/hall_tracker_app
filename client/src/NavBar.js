@@ -3,11 +3,11 @@ import {Link} from "react-router-dom"
 import {AppBar, Toolbar, Typography, Tabs, Tab, Button} from '@mui/material';
 
 
-function NavBar({instructor, onLogout}) {
+function NavBar({instructor, handleLogout}) {
     function handleLogout() {
-        fetch("http://localhost:3000/logout", {
+        fetch("/logout", {
           method: "DELETE",
-        }).then(() => onLogout());
+        }).then((instructor) => handleLogout(instructor));
       }
     
     return (

@@ -1,7 +1,10 @@
-import React from "react"
+import React, {useState} from "react"
 import { Typography, Button, Box } from "@mui/material"
+import {Link} from "react-router-dom"
+
 
 function Home () {
+
     return (
         <div>
             <Box
@@ -31,9 +34,12 @@ function Home () {
                 sx={{ marginTop:3, borderRadius: 3}}
                 
                 >
-                <Typography variant="h1" >
-                Sign-up
-                </Typography>
+                    <Link to="/signup">
+                        <Typography variant="h1" >
+                             Sign-up
+                        </Typography>
+                    </Link>
+                
             </Button>
             </Box>
 

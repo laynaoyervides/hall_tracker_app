@@ -43,7 +43,7 @@ class LearnersController < ApplicationController
 
    # Only allow a list of trusted parameters through.
    def learner_params
-     params.fetch(:learner, {})
+     params.permit(:name)
    end
 
    # def authorize_instructor

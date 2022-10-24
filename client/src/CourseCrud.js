@@ -7,7 +7,7 @@ function CourseCrud({instructors}) {
 
      //get list of courses
      useEffect ( ()  => {
-        fetch("http://localhost:3000/courses")
+        fetch("/courses")
         .then ((r) => r.json())
         .then ((courses) => setCourses(courses));
     }, []);
