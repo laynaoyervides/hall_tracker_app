@@ -8,13 +8,12 @@ import{cyan, yellow} from 'material-ui-colors';
  
 //import subComponents
 import NavBar from "./NavBar";
-import Login from './Login';
 import Enrollments from './Enrollments';
 import Courses from './CourseCrud';
 import Learners from './Learners';
 import Activity from './Activity';
 import Home from './Home';
-import SignUp from './SignUp'
+import Landing from './Landing';
 
 
 function App() {  
@@ -45,23 +44,26 @@ function App() {
   });
 }, []); 
 
+if (!instructor) return (
+  <div style={{
+      minHeight: '100vh',
+      backgroundSize: 'cover', 
+      padding: "100px"}}>
+    <Landing onLogin={setInstructor} />
+  </div>)
 
 
-function handleLogout () {
-  setInstructor(null);
-} 
+
 
   return (
       <ThemeProvider theme={theme}>
-        <NavBar instructor={instructor} handleLogout={handleLogout}/>
+        <NavBar instructor={instructor} setInstructor={setInstructor}/>
         <Routes>
-            <Route exact path="/" element={<Home />} />    
-            <Route path="/login" element={<Login onLogin={setInstructor} />}/>
+            <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
             <Route path='/courses' element={<Courses />} />
             <Route path="/enrollments" element={<Enrollments />} />
             <Route path="/learners" element={<Learners />} />
             <Route path="/activity" element={<Activity/>} />
-            <Route path="/signup" element={<SignUp onLogin={setInstructor}/>} />
 
             <Route path="*" element={<h1>404 not found</h1>}/>
         </Routes>

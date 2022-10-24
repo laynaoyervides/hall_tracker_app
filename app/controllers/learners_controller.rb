@@ -1,6 +1,6 @@
 class LearnersController < ApplicationController
  
-  skip_before_action :confirm_authentication
+  skip_before_action :confirm_authentication 
 
 
    # GET /learners

@@ -1,6 +1,5 @@
-import React, {useState} from "react"
-import { Typography, Button, Box } from "@mui/material"
-import {Link} from "react-router-dom"
+import React from "react"
+import { Typography, Box } from "@mui/material"
 
 
 function Home () {
@@ -28,19 +27,6 @@ function Home () {
             <br></br>
 
             
-            <Button 
-                variant="contained" 
-                color="secondary"
-                sx={{ marginTop:3, borderRadius: 3}}
-                
-                >
-                    <Link to="/signup">
-                        <Typography variant="h1" >
-                             Sign-up
-                        </Typography>
-                    </Link>
-                
-            </Button>
             </Box>
 
         </div>

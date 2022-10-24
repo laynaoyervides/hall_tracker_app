@@ -3,11 +3,13 @@ import {Link} from "react-router-dom"
 import {AppBar, Toolbar, Typography, Tabs, Tab, Button} from '@mui/material';
 
 
-function NavBar({instructor, handleLogout}) {
+function NavBar({instructor, setInstructor}) {
     function handleLogout() {
-        fetch("/logout", {
-          method: "DELETE",
-        }).then((instructor) => handleLogout(instructor));
+        fetch("/logout", { method: "DELETE" }).then((r) => {
+          if (r.ok) {
+            setInstructor(null);
+          }
+        });
       }
     
     return (
@@ -29,7 +31,7 @@ function NavBar({instructor, handleLogout}) {
                             { instructor ? (
                                 <div>
                                 <p>Welcome, {instructor.username}!</p>
-                                 <button onClick={handleLogout}>Logout</button>
+                                 <button variant="outline" onClick={handleLogout}>LOGOUT</button>
                                 </div>
                                 ) : (
                                     <Button sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
