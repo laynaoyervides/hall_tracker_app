@@ -25,18 +25,28 @@ function Login ({onLogin}) {
             
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <Box display ="flex" 
+            <Typography variant="h2"
+            sx={{marginTop:10, paddingLeft:10, paddingRight:10, textAlign:"center"}}
+            >
+Welcome Back!
+</Typography>
+            <form 
+            onSubmit={handleSubmit}>
+                <Box 
+                display ="flex" 
                 flexDirection={'column'} 
                 max width={400}
                 alignItems="center"
                 justifyContent={"center"}
                 margin="auto"
-                    marginTop={40}
+                    marginTop={10}
+                    marginBottom={10}
                     padding={3}
                     borderRadius={5}
                     boxShadow={'5px 5px 10px #ccc'}
-                    sx={{":hover": {
+                    sx={{ 
+                        backgroundColor: "#ffff72",           
+                        ":hover": {
                         boxShadow:'10px 10px 20px #ccc'
                     }}}
                 >

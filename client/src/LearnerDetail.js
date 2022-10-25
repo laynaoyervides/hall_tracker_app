@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import EditLearner from "./EditLearner"
+import {Button, Typography, Box} from "@mui/material"
 
 function LearnerDetail ({learner, deleteLearner, onUpdateLearner}) {
     const{id, name } = learner;
@@ -19,13 +20,20 @@ function LearnerDetail ({learner, deleteLearner, onUpdateLearner}) {
 
     return(
         <div>
+            <Box 
+            display={"flex"}
+
+        >
+
                 { isEditing ? (
                 <EditLearner learner={learner} onUpdateLearner={handleLearnerUpdate}/>
                 ) :
-                (<h3>Learner Name:{name}<br></br></h3>)
+                (<Typography variant='h6'sx={{padding:"15px"}}>{name}</Typography>)
+    
             }
-            <button onClick={() => setIsEditing((isEditing) => !isEditing)}><h5>EDIT</h5></button>
-                <button onClick={handleDelete}><h5>DELETE</h5></button>
+            <Button variant="outlined" onClick={() => setIsEditing((isEditing) => !isEditing)}><h5>EDIT</h5></Button>
+                <Button onClick={handleDelete}><h5>DELETE</h5></Button>
+                </Box>
 
         </div>
     )

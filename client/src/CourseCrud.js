@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import NewCourse from "./NewCourse";
 import CourseDetail from "./CourseDetail";
+import {Typography, Box} from "@mui/material"
 
 function CourseCrud({instructors}) {
     const [courses, setCourses] = useState([])
@@ -38,6 +39,23 @@ function CourseCrud({instructors}) {
 }
     return(
         <div>
+            <Box                     
+               marginTop={15}
+               paddingTop={15}
+               paddingLeft={15}
+               display ="flex" 
+                flexDirection={'column'} 
+                alignItems={"left"}
+                justifyContent={"center"}
+                backgroundColor={"#ffff72"}
+                borderRadius={5}
+                boxShadow={'5px 5px 10px #000'}
+               >
+            <Typography variant="h2">
+Course Dashboard
+                </Typography>
+                <NewCourse addNewCourse={addNewCourse} instructors={instructors}/> 
+
             {courses.map((course) => (
                 <CourseDetail 
                 key={course.id}
@@ -52,7 +70,7 @@ function CourseCrud({instructors}) {
                 />
             ))
         }
-            <NewCourse addNewCourse={addNewCourse} instructors={instructors}/> 
+            </Box>
         </div>
     )
 }

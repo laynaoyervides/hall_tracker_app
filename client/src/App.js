@@ -4,7 +4,7 @@ import React, {useState, useEffect } from "react"
 
 //Material UI
 import {createTheme, ThemeProvider} from '@mui/material/styles'
-import{cyan, yellow} from 'material-ui-colors';
+import{lightBlue, yellow} from 'material-ui-colors';
  
 //import subComponents
 import NavBar from "./NavBar";
@@ -23,7 +23,7 @@ function App() {
  const theme = createTheme({
   palette: {
     primary: {
-      main: cyan[400],
+      main: lightBlue[400],
     },
     secondary: {
       main: yellow[400],
@@ -47,7 +47,8 @@ function App() {
 if (!instructor) return (
   <div style={{
       minHeight: '100vh',
-      backgroundSize: 'cover', 
+      backgroundSize: 'cover',
+      backgroundColor: "#82f7ff", 
       padding: "100px"}}>
     <Landing onLogin={setInstructor} />
   </div>)
@@ -56,6 +57,13 @@ if (!instructor) return (
 
 
   return (
+      <div
+      style={{
+        minHeight: '100vh',
+        backgroundSize: 'cover',
+        backgroundColor: "#40c4ff", 
+        padding: "100px"}}
+      >
       <ThemeProvider theme={theme}>
         <NavBar instructor={instructor} setInstructor={setInstructor}/>
         <Routes>
@@ -68,6 +76,7 @@ if (!instructor) return (
             <Route path="*" element={<h1>404 not found</h1>}/>
         </Routes>
     </ThemeProvider>
+    </div>
   );
 }
 

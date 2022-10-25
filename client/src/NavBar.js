@@ -1,6 +1,7 @@
 import React from "react"
 import {Link} from "react-router-dom"
 import {AppBar, Toolbar, Typography, Tabs, Tab, Button} from '@mui/material';
+import { padding } from "@mui/system";
 
 
 function NavBar({instructor, setInstructor}) {
@@ -15,7 +16,7 @@ function NavBar({instructor, setInstructor}) {
     return (
 
         <div>
-            <AppBar>
+            <AppBar color="primary"> 
                 <Toolbar>
                     <Typography variant="h2">PASSCHECK APP</Typography>
           
@@ -29,12 +30,31 @@ function NavBar({instructor, setInstructor}) {
 
         <header>
                             { instructor ? (
-                                <div>
-                                <p>Welcome, {instructor.username}!</p>
-                                 <button variant="outline" onClick={handleLogout}>LOGOUT</button>
+                                <div
+                                style={{
+                                    display:"flex",
+                                    margin: "20px",
+                                    backgroundColor: "#82f7ff",
+                                    borderRadius:"5px"
+
+                                    
+                                }}>
+                                <Typography variant="h6"
+                                    sx={{
+                                        marginRight: "10px",
+                                        paddingLeft: "10px"
+                                    }}
+                                >Welcome, {instructor.username}!</Typography>
+                                 <Button 
+                                 variant="contained"
+                                 color="secondary"
+                                 marginLeft="10"
+                                 onClick={handleLogout}>
+                                    LOGOUT
+                                </Button>
                                 </div>
                                 ) : (
-                                    <Button sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
+                                    <Button variant="outlined" sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
                                     )
                             }
                         </header>

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import LearnerDetail from './LearnerDetail'
 import NewLearner from './NewLearner'
+import { Box, Typography } from "@mui/material";
+import { blue } from "material-ui-colors";
 
 function Learners () {
 
@@ -38,13 +40,23 @@ function Learners () {
 
     return (
         <div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+               <Box                     
+               marginTop={15}
+               paddingTop={15}
+               paddingLeft={15}
+               display ="flex" 
+                flexDirection={'column'} 
+                alignItems={"left"}
+                justifyContent={"center"}
+                backgroundColor={" #82f7ff"}
+                borderRadius={5}
+                boxShadow={'5px 5px 10px #000'}
+               >
+                <Typography variant="h2">
+Learner Dashboard
+                </Typography>
+
+                <NewLearner addNewLearner={addNewLearner}/> 
 
                {learners.map((learner) => (
                 <LearnerDetail  
@@ -58,8 +70,7 @@ function Learners () {
                 ))
 
         }
-                <NewLearner addNewLearner={addNewLearner}/> 
-
+                </Box>
         </div>
     )
 }

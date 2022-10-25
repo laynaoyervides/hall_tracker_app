@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import { Typography, Box, Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { lightBlue, yellow } from "material-ui-colors";
 
 import Login from "./Login.js"
 import SignUp from "./SignUp.js"
@@ -8,36 +10,61 @@ function Landing ({onLogin}){
 
     const [showLogin, setShowLogin] = useState(true);
 
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: lightBlue[400],
+          },
+          secondary: {
+            main: yellow[400],
+          },
+        },
+      });  
+
     return (
        <div>
+        <ThemeProvider theme={theme}>
        <Box>
-                <Typography>Hall Pass App</Typography> 
+                <Typography 
+                variant="h1"
+                sx={{textAlign: "center", marginTop: 20}}
+                >
+                    PASSCHECK APP
+                    </Typography> 
                {showLogin ? (
                     <>
                     <Login onLogin={onLogin}/>
                     <hr></hr>
-                    <p>
-                        Need an account?
-                        <Button color="secondary" onClick={() => setShowLogin(false)}>
+                    <Typography variant="h6">
+                        Already have an account?
+                    </Typography>
+                        <br></br>
+                        <Button 
+                        color="primary" 
+                        variant="contained" 
+                        onClick={() => setShowLogin(false)}>
                          Sign Up
                      </Button>
-                    </p>
+                    
                     </>
                     
                 ) : (
                     <>
                     <SignUp onLogin={onLogin} />
-                    <p>
+                    <Typography variant="h6">
                         Already have an account?
-                        <Button color="secondary" onClick={() => setShowLogin(true)}>
+                    </Typography>
+
+                    <br></br>
+                        <Button color="primary" variant="contained" onClick={() => setShowLogin(true)}>
                          Log In
                         </Button>
 
-                    </p>
                     </>
                 )
                 }
                </Box>
+               </ThemeProvider>
                </div>
     )
 }

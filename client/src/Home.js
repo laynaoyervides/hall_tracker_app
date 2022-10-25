@@ -10,11 +10,12 @@ function Home () {
             display ="flex" 
             flexDirection={'column'} 
             justifyContent={"center"}
+            backgroundColor={"#ffffff"}
             margin="auto"
-                    marginTop={10}
+                    marginTop={20}
                     padding={3}
                     borderRadius={5}
-                    boxShadow={'5px 5px 10px #ccc'}
+                    boxShadow={'5px 5px 10px #000'}
             >
             <Typography sx={{marginTop:10, paddingLeft:10, paddingRight:10, textAlign:"center"}} variant="h1">
                 Welcome to PassCheck App

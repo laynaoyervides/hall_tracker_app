@@ -36,11 +36,10 @@ function SignUp ({onLogin}) {
     return (
         <div>
             <Box>
-            <Typography variant="h1"
+            <Typography variant="h2"
             sx={{marginTop:10, paddingLeft:10, paddingRight:10, textAlign:"center"}}
             >
-                SIGN UP HERE
-            </Typography>
+Keep your classroom accountable            </Typography>
             </Box>
 
             <form onSubmit={handleSubmit}>
@@ -50,11 +49,13 @@ function SignUp ({onLogin}) {
                 alignItems="center"
                 justifyContent={"center"}
                 margin="auto"
-                    marginTop={40}
+                    marginTop={10}
                     padding={3}
                     borderRadius={5}
                     boxShadow={'5px 5px 10px #ccc'}
-                    sx={{":hover": {
+                    sx={{
+                        backgroundColor: "#ffff72",           
+                        ":hover": {
                         boxShadow:'10px 10px 20px #ccc'
                     }}}
                 >

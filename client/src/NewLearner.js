@@ -1,3 +1,4 @@
+import { Typography, Button } from "@mui/material";
 import React, {useState} from "react";
 
 function NewLearner ({addNewLearner}) {
@@ -26,9 +27,12 @@ function NewLearner ({addNewLearner}) {
     };
     return(
         <div>
-            <h3>ADD A NEW LEARNER</h3>
+            <Typography variant="h6" sx={{marginTop: "10px"}}>ADD A NEW LEARNER</Typography>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Learner Name:</label>
+            <label htmlFor="name"
+             sx={{}}
+            >
+                Learner Name: </label>
                 <input 
                     id="name"
                     type="text"
@@ -36,8 +40,9 @@ function NewLearner ({addNewLearner}) {
                     name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    />
-                <button type="submit">Create Learner</button>
+                    paddingLeft={10}
+                                        />
+                <Button variant="contained" color="secondary" type="submit" sx={{marginLeft:"10px"}}>Create Learner</Button>
                 </form>
 
         </div>

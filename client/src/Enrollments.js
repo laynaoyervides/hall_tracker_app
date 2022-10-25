@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CourseList from "./CourseList";
+import {Box, Typography} from '@mui/material'
 
 function Enrollments () {
 
@@ -14,7 +15,19 @@ function Enrollments () {
 
     return (
         <div>
-        <h1>Enrollments</h1>
+            <Box                     
+               marginTop={15}
+               paddingTop={15}
+               paddingLeft={15}
+               display ="flex" 
+                flexDirection={'column'} 
+                alignItems={"left"}
+                justifyContent={"center"}
+                backgroundColor={"#ffff72"}
+                borderRadius={5}
+                boxShadow={'5px 5px 10px #000'}
+               >
+        <Typography variant="h2">Enrollments</Typography>
             <div > 
                 <div > 
                    <h2>Courses</h2>
@@ -29,7 +42,8 @@ function Enrollments () {
                    )}
                 </div>
                 
-            </div>        
+            </div>  
+            </Box>      
         </div>
     )
 }
