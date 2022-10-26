@@ -20,7 +20,7 @@ function NewLearner ({addNewLearner}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:3000/createlearner", configObj)
+        fetch("/learners", configObj)
         .then ((resp) => resp.json())
         .then ((learner) => {addNewLearner(learner)
         });

@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 
-function EditCourse ({course, onUpdateCourse, instructors}) {
-    const {course_name, class_period}=course;
+function EditCourse ({course, onUpdateCourse}) {
+    const {id, course_name, class_period}=course;
     const[updatedName, setUpdatedName]=useState(course_name);
     const[updatedPeriod, setUpdatedPeriod]= useState(class_period);
-    const [instructor, setInstructor]=useState("")
 
     const changeCourse = {
       course_name: updatedName,
       class_period: updatedPeriod,
-      instuctor_id: (instructor.id)
     }
 
     function handleEditForm(e) {
     e.preventDefault();
 
     // Make a PATCH fetch request to update a single donation
-    fetch("http://localhost:3000/editcourse", {
+    fetch(`/courses/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -44,20 +42,7 @@ function EditCourse ({course, onUpdateCourse, instructors}) {
                 value={updatedPeriod}
                 onChange={(e)=>setUpdatedPeriod(e.target.value)}
             />
-            <label>Instructor
-                <select
-                    placeholder="Select an Instructor"
-                    onChange={(e)=> setInstructor(e.target.value)}
-                    >
-                        <option value="none">Select an instructor:</option>
-                    {instructors.map((instructor)=>
-                    (
-                        <option key={instructor.id} value={instructor.id}>
-                            {instructor.name}
-                        </option>
-                    ))}
-                    </select>
-                </label>
+           
             <input type="submit" value="Save" />
         </form>
     )

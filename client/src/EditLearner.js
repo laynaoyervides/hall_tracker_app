@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function EditLearner ({learner, onUpdateLearner}){
-    const {name}=learner;
+    const {id, name}=learner;
     const [updatedName, setUpdatedName]=useState(name)
 
     const changeLearner ={
@@ -11,7 +11,7 @@ function EditLearner ({learner, onUpdateLearner}){
         e.preventDefault();
 
 //PATCH to edit single learner
-        fetch("http://localhost:3000/editlearner", {
+        fetch(`/learners/${id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

@@ -8,7 +8,7 @@ function LearnerDetail ({learner, deleteLearner, onUpdateLearner}) {
     
     function handleDelete () {
         deleteLearner(id);
-        fetch("http://localhost:3000/deleteLearner" , {
+        fetch(`/learners/${id}` , {
             method: "DELETE",
         });
     };

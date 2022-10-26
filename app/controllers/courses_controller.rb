@@ -16,12 +16,15 @@ skip_before_action :confirm_authentication
 
 # "/editcourse"
   def update
-    if @course.update(course_params)
-      render json: @course, status: :ok
+    course = Course.find_by(id: params[:id])
+    if course.update!(course_params)
+      render json: course, status: :accepted
     else
       render json: @course.errors, status: :unprocessable_entity
     end
   end
+
+
 
   #POST course "/createcourse"
     def create
