@@ -1,7 +1,6 @@
 import React from "react"
 import {Link} from "react-router-dom"
 import {AppBar, Toolbar, Typography, Tabs, Tab, Button} from '@mui/material';
-import { padding } from "@mui/system";
 
 
 function NavBar({instructor, setInstructor}) {
@@ -54,7 +53,7 @@ function NavBar({instructor, setInstructor}) {
                                 </Button>
                                 </div>
                                 ) : (
-                                    <Button variant="outlined" sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
+                                    <Button sx={{padding: '10px', marginTop: "10px"}} variant="contained" color="secondary"> <Link to="/login">Login</Link></Button>
                                     )
                             }
                         </header>

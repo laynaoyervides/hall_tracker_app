@@ -4,13 +4,10 @@ import React, { useState } from "react";
 function NewCourse ({addNewCourse}) {
     const [course_name, setCourse_name] = useState("")
     const [class_period, setClass_period] = useState("")
-    //const [instructor, setInstructor] = useState("");
 
     const newCourse = {
         course_name,
-        class_period,
-    //    instructor_id: instructor,
-        
+        class_period        
     }
 
     const configObj = {
@@ -25,7 +22,7 @@ function NewCourse ({addNewCourse}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:3000/createcourse", configObj)
+        fetch("/courses", configObj)
         .then ((resp) => resp.json())
         .then ((course) => {addNewCourse(course)
         });

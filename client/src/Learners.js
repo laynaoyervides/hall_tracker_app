@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import LearnerDetail from './LearnerDetail'
 import NewLearner from './NewLearner'
 import { Box, Typography } from "@mui/material";
-import { blue } from "material-ui-colors";
 
 function Learners () {
 

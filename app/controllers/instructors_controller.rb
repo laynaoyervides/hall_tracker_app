@@ -5,7 +5,7 @@ skip_before_action :confirm_authentication
     #get '/me'
     def show
         if current_instructor
-            render json: current_instructor, status: :ok
+            render json: current_instructor, status: :created
         else
             render json: { error: 'No active session'}, status: :unauthorized
         end
