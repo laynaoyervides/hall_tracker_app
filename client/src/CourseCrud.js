@@ -3,15 +3,18 @@ import NewCourse from "./NewCourse";
 import CourseDetail from "./CourseDetail";
 import {Typography, Box} from "@mui/material"
 
-function CourseCrud({instructors}) {
-    const [courses, setCourses] = useState([])
+function CourseCrud({instructor}) {
+    const [courses, setCourses] = useState([]);
 
      //get list of courses
      useEffect ( ()  => {
         fetch("/courses")
         .then ((r) => r.json())
-        .then ((courses) => setCourses(courses));
-    }, []);
+        .then ((coursesArray) => 
+            setCourses(
+            coursesArray.filter((course)=>course.instructor_id === instructor.id))
+        );
+    }, [instructor.id]);
 
 
     // Add a new course - CREATE - 
@@ -54,7 +57,7 @@ function CourseCrud({instructors}) {
             <Typography variant="h2">
 Course Dashboard
                 </Typography>
-                <NewCourse addNewCourse={addNewCourse} instructors={instructors}/> 
+                <NewCourse addNewCourse={addNewCourse} instructor={instructor}/> 
 
             {courses.map((course) => (
                 <CourseDetail 
@@ -65,7 +68,7 @@ Course Dashboard
                 onUpdateCourse={handleUpdateCourse}
                 courses={courses}
                 course={course}
-                instructors={instructors}
+                instructor={instructor}
                 // learners={course.learners}
                 />
             ))

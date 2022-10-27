@@ -68,7 +68,7 @@ if (!instructor) return (
         <NavBar instructor={instructor} setInstructor={setInstructor}/>
         <Routes>
             <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
-            <Route path='/courses' element={<Courses />} />
+            <Route path='/courses' element={<Courses instructor={instructor} />} />
             <Route path="/enrollments" element={<Enrollments />} />
             <Route path="/learners" element={<Learners />} />
             <Route path="/activity" element={<Activity/>} />
