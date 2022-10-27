@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
 
-function NewCourse ({addNewCourse}) {
+function NewCourse ({addNewCourse, instructor}) {
     const [course_name, setCourse_name] = useState("")
     const [class_period, setClass_period] = useState("")
 
-    const newCourse = {
-        course_name,
-        class_period        
-    }
+/*  const newCourse = {
+        course_name: course_name,
+                class_period: class_period,
+                instructor_id: instructor.id  */      
+//    }
 
     const configObj = {
         method: "POST",
@@ -16,7 +17,14 @@ function NewCourse ({addNewCourse}) {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(newCourse),
+        body: JSON.stringify(
+            {
+                course_name: course_name,
+                class_period: class_period,
+                instructor_id: instructor.id
+            }
+                
+        ),
     };
 
     const handleSubmit = (e) => {
@@ -24,7 +32,7 @@ function NewCourse ({addNewCourse}) {
 
         fetch("/courses", configObj)
         .then ((resp) => resp.json())
-        .then ((course) => {addNewCourse(course)
+        .then ((newCourse) => {addNewCourse(newCourse)
         });
     };
 
@@ -51,20 +59,7 @@ function NewCourse ({addNewCourse}) {
                     value={class_period}
                     onChange={(e)=> setClass_period(e.target.value)}
                     />
-                {/* <label>Instructor
-                <select
-                    placeholder="Select an Instructor"
-                    onChange={(e)=> setInstructor(e.target.value)}
-                    >
-                        <option value="none">Select an instructor:</option>
-                    {instructors.map((instructor)=>
-                    (
-                        <option key={instructor.id} value={instructor.id}>
-                            {instructor.name}
-                        </option>
-                    ))}
-                    </select>
-                </label> */}
+               
         <button type="submit">Create Course</button>
         </form>
         </div>

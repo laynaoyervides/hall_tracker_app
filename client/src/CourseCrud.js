@@ -66,10 +66,8 @@ Course Dashboard
                 classPeriod={course.class_period}
                 deleteCourse={deleteCourse}
                 onUpdateCourse={handleUpdateCourse}
-                courses={courses}
                 course={course}
                 instructor={instructor}
-                // learners={course.learners}
                 />
             ))
         }

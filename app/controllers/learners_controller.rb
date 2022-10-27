@@ -1,6 +1,6 @@
 class LearnersController < ApplicationController
   #before_action :set_learner
-  #before_action :authorize_instructor
+  before_action :authorize_instructor
 skip_before_action :confirm_authentication
    # GET /learners
    def index
@@ -16,8 +16,8 @@ skip_before_action :confirm_authentication
 # POST /learners
    def create
        learner = Learner.new(learner_params)
-       if learner.save
-       render json: learner, status: :created
+       if @learner.save
+       render json: @learner, status: :created
        else
         render json: @learner.errors, status: :unprocessable_entity
        end
@@ -25,10 +25,10 @@ skip_before_action :confirm_authentication
    end
 # PATCH/PUT /learners/1
  def update
-  if @learner.update(learner_params)
-     render json: @learner, status: :accepted
+  if learner.update(learner_params)
+     render json: learner, status: :accepted
    else
-     render json: @learner.errors, status: :unprocessable_entity
+     render json: learner.errors, status: :unprocessable_entity
    end
  end
 
