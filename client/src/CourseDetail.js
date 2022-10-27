@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import EditCourse from "./EditCourse";
 
-function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
-    const{id, course_name, class_period } = course;
+function CourseDetail ({deleteCourse, onUpdateCourse, course, instructor}) {
+   // const{id, course_name, class_period, instructor_id } = course;
     const [isEditing, setIsEditing]= useState(false);
     
-    function handleDelete () {
-        deleteCourse(id);
+    function handleDelete (id) {
         fetch(`/courses/${id}` , {
             method: "DELETE",
-        });
+        })
+        .then((r)=> {
+       
+            if (r.ok) {
+                deleteCourse();
+            }
+        })
+            .catch((err)=> console.log(err))
+    
     };
     const handleCourseUpdate = (updatedCourse) => {
         setIsEditing(false);
@@ -18,9 +25,9 @@ function CourseDetail ({deleteCourse, onUpdateCourse, course, instructors}) {
     return (
         <div>
             { isEditing ? (
-                <EditCourse course={course} onUpdateCourse={handleCourseUpdate} instructors={instructors}/>
+                <EditCourse course={course} onUpdateCourse={handleCourseUpdate} instructor={instructor}/>
                 ) :
-                (<h3>Course Name:{course_name}<br></br>Class Period:{class_period}</h3>)
+                (<h3>Course Name:{course.course_name}<br></br>Class Period:{course.class_period}</h3>)
             }
             <button onClick={() => setIsEditing((isEditing) => !isEditing)}><h5>EDIT</h5></button>
                 <button onClick={handleDelete}><h5>DELETE</h5></button>

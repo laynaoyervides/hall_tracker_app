@@ -55,7 +55,7 @@ function CourseCrud({instructor}) {
                 boxShadow={'5px 5px 10px #000'}
                >
             <Typography variant="h2">
-Course Dashboard
+My Course Dashboard
                 </Typography>
                 <NewCourse addNewCourse={addNewCourse} instructor={instructor}/> 
 

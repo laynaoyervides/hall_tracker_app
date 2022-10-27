@@ -1,7 +1,10 @@
 class LearnersController < ApplicationController
-  #before_action :set_learner
-  before_action :authorize_instructor
-skip_before_action :confirm_authentication
+  
+
+before_action :confirm_authentication
+before_action :authorize_instructor
+    #before_action :set_learner
+
    # GET /learners
    def index
        @learners = Learner.all
@@ -43,7 +46,7 @@ skip_before_action :confirm_authentication
 
    # Only allow a list of trusted parameters through.
    def learner_params
-     params.permit(:name)
+     params.permit(:name, :admin)
    end
 
    def set_learner

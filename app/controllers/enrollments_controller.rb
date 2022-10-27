@@ -1,10 +1,10 @@
-class EnrollmentController < ApplicationController
+class EnrollmentsController < ApplicationController
     skip_before_action :confirm_authentication
 
     # GET /enrollments
    def index
     @enrollments = Enrollment.all
-    render json: @enrollments, include: :courses
+    render json: @enrollments
   end
 
 # GET /enrollments/1
