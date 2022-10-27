@@ -16,12 +16,13 @@ skip_before_action :confirm_authentication
 
 #POST course "/courses"
     def create
-      course = Course.new(course_params)
-    if course.save
-      render json: course, status: created
-    else 
+      course = @current_instructor.courses.new(course_params)
+      if course.save
+        render json: course, status: :created
+      else
         render json: @course.errors, status: :unprocessable_entity
       end
+    
   end
 
 # "/courses/:id"

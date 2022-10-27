@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
     private
 
     def current_instructor
-      @current_instructor ||= Instructor.find_by(id: session[:user_id])
+      @current_instructor ||= Instructor.find_by(id: session[:instructor_id])
     end
 
     def logged_in?

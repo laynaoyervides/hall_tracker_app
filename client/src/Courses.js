@@ -10,7 +10,7 @@ function Courses () {
             .then((resp) => resp.json())
             .then((instructor)=> setInstructors(instructor));
         }, []);
-
+console.log(instructors);
     return (
         <div>
             <CourseCrud instructors={instructors}/>
