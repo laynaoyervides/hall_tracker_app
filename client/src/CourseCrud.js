@@ -35,11 +35,20 @@ function CourseCrud({instructor}) {
     }
     // delete a course - DELETE -
     function deleteCourse (id) {
-        const updatedCourses = courses.filter((course) => 
-            course.id !== id);
-        setCourses(updatedCourses);
+        fetch(`/courses/${id}` , {
+            method: "DELETE",
+        })
+        .then((r)=> {
+       
+            if (r.ok) {
+                setCourses(courses.filter((course)=>course.id !==id));
+            }
+        })
+            .catch((err)=> console.log(err))
+    
+    };
 
-}
+
     return(
         <div>
             <Box                     

@@ -5,7 +5,6 @@ import {Button, Typography, Box} from "@mui/material"
 function LearnerDetail ({learner, onUpdateLearner, deleteLearner}) {
     const{ name } = learner;
     const [isEditing, setIsEditing]= useState(false);
-    //const [learners, setLearners] =useState([]);
 
     
 
