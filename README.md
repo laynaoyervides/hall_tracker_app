@@ -59,10 +59,12 @@ Contributors are expected to adhere to the Contributor Covenant code of conduct.
 ### Resources ** 
 create-react-app thinking in react material UI
 
-### Copyright © 2022 by Layna Oyervides, SiteZinger
 
 A view of the MVP can be seen here:
 https://www.loom.com/share/dbd98a00f1fe4dcea7a9b03c4c674626
 
 More information about the process on Medium:
 https://medium.com/@laynaoyervides/bespoke-hall-pass-app-with-rails-api-aa188c3ddd00 
+
+### Copyright © 2022 by Layna Oyervides, SiteZinger
+Made as part of the Flatiron School Software Engineering Program August'21-Nov'22
