@@ -53,8 +53,7 @@ function CourseCrud({instructor}) {
         <div>
             <Box                     
                marginTop={15}
-               paddingTop={15}
-               paddingLeft={15}
+               padding={15}
                display ="flex" 
                 flexDirection={'column'} 
                 alignItems={"left"}
@@ -63,23 +62,31 @@ function CourseCrud({instructor}) {
                 borderRadius={5}
                 boxShadow={'5px 5px 10px #000'}
                >
-            <Typography variant="h2">
-My Course Dashboard
+            <Typography variant="h1" align="center" sx={{marginBottom:"20px"}}>
+                My Course Dashboard
                 </Typography>
-                <NewCourse addNewCourse={addNewCourse} instructor={instructor}/> 
+                <Box
+                display="grid" 
+                flexDirection={'row'}
+                gridTemplateColumns= 'repeat(3, 1fr)' 
+                
+                >
+                     {courses.map((course) => (
+                         <CourseDetail 
+                            key={course.id}
+                            courseName = {course.course_name}
+                             classPeriod={course.class_period}
+                              deleteCourse={deleteCourse}
+                                onUpdateCourse={handleUpdateCourse}
+                             course={course}
+                             instructor={instructor}
+                        />
+                     ))
+                 }
 
-            {courses.map((course) => (
-                <CourseDetail 
-                key={course.id}
-                courseName = {course.course_name}
-                classPeriod={course.class_period}
-                deleteCourse={deleteCourse}
-                onUpdateCourse={handleUpdateCourse}
-                course={course}
-                instructor={instructor}
-                />
-            ))
-        }
+                 </Box>
+                 <NewCourse addNewCourse={addNewCourse} instructor={instructor}/> 
+
             </Box>
         </div>
     )

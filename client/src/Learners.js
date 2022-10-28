@@ -47,8 +47,7 @@ function Learners () {
         <div>
                <Box                     
                marginTop={15}
-               paddingTop={15}
-               paddingLeft={15}
+               padding={15}
                display ="flex" 
                 flexDirection={'column'} 
                 alignItems={"left"}
@@ -57,7 +56,7 @@ function Learners () {
                 borderRadius={5}
                 boxShadow={'5px 5px 10px #000'}
                >
-                <Typography variant="h2">
+                <Typography variant="h1">
 Learner Dashboard
                 </Typography>
 

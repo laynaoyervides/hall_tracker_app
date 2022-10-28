@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CourseList from "./CourseList";
-import {Box, Typography} from '@mui/material'
+import {Box, FormControl, InputLabel, Select, Typography} from '@mui/material'
 
 function Enrollments () {
 
@@ -17,8 +17,8 @@ function Enrollments () {
         <div>
             <Box                     
                marginTop={15}
-               paddingTop={15}
-               paddingLeft={15}
+               padding={15}
+               
                display ="flex" 
                 flexDirection={'column'} 
                 alignItems={"left"}
@@ -27,10 +27,15 @@ function Enrollments () {
                 borderRadius={5}
                 boxShadow={'5px 5px 10px #000'}
                >
-        <Typography variant="h2">Enrollments</Typography>
+        
+        <Typography variant="h1" textAlign="center">Enrollments</Typography>
+            <br></br>
             <div > 
+                <Typography variant="h4" textAlign="center">Enroll students in your courses by choosing your course and adding students</Typography>
                 <div > 
-                   <h2>Courses</h2>
+                    <FormControl>
+                <Select>
+                   <InputLabel>Courses</InputLabel>
                    {courses.map((course)=>
                     <CourseList 
                     key={course.id}
@@ -38,8 +43,11 @@ function Enrollments () {
                     courseName = {course.course_name}
                     classPeriod={course.class_period}
                     />
+                    
 
                    )}
+                   </Select>
+                   </FormControl>
                 </div>
                 
             </div>  

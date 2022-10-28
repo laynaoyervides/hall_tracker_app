@@ -1,3 +1,4 @@
+import { Typography, Box, Button } from "@mui/material";
 import React, { useState } from "react";
 
 
@@ -39,9 +40,13 @@ function NewCourse ({addNewCourse, instructor}) {
 
     return(
         <div>
-            <h3>ADD A NEW COURSE</h3>
+            <Typography variant="h3"  sx={{marginTop:"30px"}}>+ ADD A NEW COURSE</Typography>
+            <Box
+            sx={{
+                margin:"20px", justifyContent:"center"
+            }}>
             <form onSubmit={handleSubmit}>
-            <label htmlFor="coursename">Course Name:</label>
+            <label htmlFor="coursename"><Typography variant="h5">Course Name:</Typography></label>
                 <input 
                     id="coursename"
                     type="text"
@@ -50,7 +55,7 @@ function NewCourse ({addNewCourse, instructor}) {
                     value={course_name}
                     onChange={(e) => setCourse_name(e.target.value)}
                     />
-                <label htmlFor="classperiod">Class Period</label>
+                <label htmlFor="classperiod"><Typography variant="h5">Class Period</Typography></label>
                 <input
                     id="period"
                     type="text"
@@ -59,9 +64,10 @@ function NewCourse ({addNewCourse, instructor}) {
                     value={class_period}
                     onChange={(e)=> setClass_period(e.target.value)}
                     />
-               
-        <button type="submit">Create Course</button>
+               <br></br>
+        <Button type="submit" variant="contained" sx={{marginTop:"15px", backgroundColor:"#82f7ff"}}>Create Course</Button>
         </form>
+        </Box>
         </div>
     );
 }
