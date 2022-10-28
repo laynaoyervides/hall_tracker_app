@@ -24,11 +24,9 @@ skip_before_action :confirm_authentication
 
 # "/courses/:id"
   def update
-    if @course.update(course_params)
+    @course.update(course_params)
       render json: @course, status: :accepted
-    else
-      render json: @course.errors, status: :unprocessable_entity
-    end
+    
   end
 
     #DELETE course "/courses/:id"

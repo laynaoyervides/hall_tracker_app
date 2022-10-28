@@ -30,12 +30,12 @@ function Learners () {
         setLearners(updatedLearners);
     }
 
-    //delete learner
+  /*   //delete learner
     function deleteLearner (id) {
         const updatedLearners = learners.filter((learner) => 
             learner.id !== id);
         setLearners(updatedLearners);
-    }
+    } */
 
     return (
         <div>
@@ -62,7 +62,7 @@ Learner Dashboard
                 key={learner.id}
                 learnerName = {learner.name}
                 onUpdateLearner={handleUpdateLearner} 
-                deleteLearner={deleteLearner}    
+                // deleteLearner={deleteLearner}    
                 learner={learner}           
                 />
 

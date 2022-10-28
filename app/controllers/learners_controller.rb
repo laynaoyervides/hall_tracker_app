@@ -28,17 +28,17 @@ before_action :authorize_instructor
    end
 # PATCH/PUT /learners/1
  def update
-  if learner.update(learner_params)
+    learner =Learner.find(params[:id])
+    learner.update!(learner_params)
      render json: learner, status: :accepted
-   else
-     render json: learner.errors, status: :unprocessable_entity
-   end
  end
 
- # DELETE /tutorial/1
+ # DELETE /learner/1
  def destroy
-   @learner.destroy
- end
+    learner = Learner.find(params[:id])
+    learner.destroy
+    head :no_content 
+  end
 
  private
    # Use callbacks to share common setup or constraints between actions.
