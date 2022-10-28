@@ -63,6 +63,12 @@ Learner Dashboard
 
                 <NewLearner addNewLearner={addNewLearner}/> 
 
+              <Box
+                display="grid" 
+                flexDirection={'row'}
+                gridTemplateColumns= 'repeat(3, 1fr)' 
+                
+                >
                {learners.map((learner) => (
                 <LearnerDetail  
                 key={learner.id}
@@ -75,6 +81,7 @@ Learner Dashboard
                 ))
 
         }
+                 </Box>
                 </Box>
         </div>
     )
