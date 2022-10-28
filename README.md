@@ -25,7 +25,7 @@ For this project, I -Used Active Record to interact with a database. -Have an In
 -A separate React front-end application that interacts with the API to perform CRUD actions.
 
 ## The following Routes are used:
-courses GET    /courses(.:format)                                                                                                            courses#index
+`courses GET    /courses(.:format)                                                                                                            courses#index
                                         POST   /courses(.:format)                                                                              courses#create
                             course GET    /courses/:id(.:format)                                                                            courses#show
                                          PATCH  /courses/:id(.:format)                                                                            courses#update
@@ -47,18 +47,15 @@ courses GET    /courses(.:format)                                               
                              signup POST   /signup(.:format)                                                                                 instructors#create
                                 login POST   /login(.:format)                                                                                  sessions#create
                               logout DELETE /logout(.:format)                                                                                 sessions#destroy
-                       instructors GET    /instructors(.:format)                                                                            instructors#index
-
+                       instructors GET    /instructors(.:format)                                                                            instructors#index`
 
 
 ## Contributing 
-Bud reports and pull requests are welcome on Github @https:..github.com/laynaoyervides/cowrie-app-copy
-
+Bud reports and pull requests are welcome on Github @https:..github.com/laynaoyervides/hall-pass-app
 Contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-### Resources ** 
+### Resources  
 create-react-app thinking in react material UI
-
 
 A view of the MVP can be seen here:
 https://www.loom.com/share/dbd98a00f1fe4dcea7a9b03c4c674626
