@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 function EditCourse ({course, onUpdateCourse}) {
-    //const {id, course_name, class_period}=course;
-    const[updatedName, setUpdatedName]=useState(course.course_name);
-    const[updatedPeriod, setUpdatedPeriod]= useState(course.class_period);
+    const {id, course_name, class_period}=course;
+    const[updatedName, setUpdatedName]=useState(course_name);
+    const[updatedPeriod, setUpdatedPeriod]= useState(class_period);
 
     const changeCourse = {
       course_name: updatedName,
@@ -13,8 +13,8 @@ function EditCourse ({course, onUpdateCourse}) {
     function handleEditForm(e) {
     e.preventDefault();
 
-    // Make a PATCH fetch request to update a single donation
-    fetch(`/courses/${course.id}`, {
+    // Make a PATCH fetch request to update a single course
+    fetch(`/courses/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

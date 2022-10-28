@@ -26,7 +26,7 @@ skip_before_action :confirm_authentication
   def update
     course = Course.find(params[:id])
     course.update!(course_params)
-    render json: learner, status: :accepted
+    render json: course, status: :accepted
     
   end
 
