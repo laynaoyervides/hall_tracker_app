@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import EditLearner from "./EditLearner"
 import {Button, Typography, Box} from "@mui/material"
 
-function LearnerDetail ({learner, onUpdateLearner, handleDelete}) {
+function LearnerDetail ({learner, onUpdateLearner, deleteLearner}) {
     const{ name } = learner;
     const [isEditing, setIsEditing]= useState(false);
     //const [learners, setLearners] =useState([]);
@@ -29,7 +29,7 @@ function LearnerDetail ({learner, onUpdateLearner, handleDelete}) {
     
             }
             <Button variant="outlined" onClick={() => setIsEditing((isEditing) => !isEditing)}><h5>EDIT</h5></Button>
-                <Button onClick={handleDelete}><h5>DELETE</h5></Button>
+                <Button onClick={() => deleteLearner(learner.id)}><h5>DELETE</h5></Button>
                 </Box>
 
         </div>
