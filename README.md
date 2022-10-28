@@ -3,7 +3,7 @@
 Hall Pass App 
 
 About 
-This App is build with Ruby on Rails and uses rails to work with an SQL database using Active Record ORM
+This App is build with Ruby on Rails and uses Rails to work with an SQL database using Active Record ORM
 
 The application provides a database and web interface for instructors to perform CRUD operations on Courses, Learners, and Enrollments tables.
 
@@ -15,9 +15,38 @@ In its final version, it allows instructors to view the times and durations of s
 
 -API routes in Rails that are set up so that: -full CRUD for Learner, Courses, and Enrollments model
 
--Authentication - Instructors can login and view learnes, enrollments, courses
+-Authentication - Instructors can login and view learners, create/edit/delete enrollments, view/create/edit/delete courses
+
+-Authorization - Admin (who are also instructors) can login, view/create/edit/delete learners, courses, and enrollments.
 
 -A separate React front-end application that interacts with the API to perform CRUD actions.
+
+The following Routes are used:
+courses GET    /courses(.:format)                                                                                                            courses#index
+                                        POST   /courses(.:format)                                                                              courses#create
+                            course GET    /courses/:id(.:format)                                                                            courses#show
+                                         PATCH  /courses/:id(.:format)                                                                            courses#update
+                                         PUT    /courses/:id(.:format)                                                                            courses#update
+                                         DELETE /courses/:id(.:format)                                                                            courses#destroy
+                           learners GET    /learners(.:format)                                                                               learners#index
+                                         POST   /learners(.:format)                                                                               learners#create
+                            learner GET    /learners/:id(.:format)                                                                           learners#show
+                                         PATCH  /learners/:id(.:format)                                                                           learners#update
+                                         PUT    /learners/:id(.:format)                                                                           learners#update
+                                         DELETE /learners/:id(.:format)                                                                           learners#destroy
+                     enrollments GET    /enrollments(.:format)                                                                            enrollments#index
+                                         POST   /enrollments(.:format)                                                                            enrollments#create
+                       enrollment GET    /enrollments/:id(.:format)                                                                        enrollments#show
+                                         PATCH  /enrollments/:id(.:format)                                                                        enrollments#update
+                                         PUT    /enrollments/:id(.:format)                                                                        enrollments#update
+                                         DELETE /enrollments/:id(.:format)                                                                        enrollments#destroy
+                                  me GET    /me(.:format)                                                                                     instructors#show
+                             signup POST   /signup(.:format)                                                                                 instructors#create
+                                login POST   /login(.:format)                                                                                  sessions#create
+                              logout DELETE /logout(.:format)                                                                                 sessions#destroy
+                       instructors GET    /instructors(.:format)                                                                            instructors#index
+
+
 
 ** #Contributing ** Bud reports and pull requests are welcome on Github @https:..github.com/laynaoyervides/cowrie-app-copy
 
