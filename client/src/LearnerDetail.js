@@ -2,24 +2,12 @@ import React, {useState} from 'react'
 import EditLearner from "./EditLearner"
 import {Button, Typography, Box} from "@mui/material"
 
-function LearnerDetail ({learner, onUpdateLearner}) {
+function LearnerDetail ({learner, onUpdateLearner, handleDelete}) {
     const{ name } = learner;
     const [isEditing, setIsEditing]= useState(false);
-    const [learners, setLearners] =useState([]);
+    //const [learners, setLearners] =useState([]);
 
-    function handleDelete (id) {
-//        deleteLearner(id);
-        fetch(`/learners/${id}` , {
-            method: "DELETE",
-        })
-        .then((r) => {
-            if (r.ok) {
-                setLearners(learners.filter((learner)=> learner.id !==id));
-            }
-        })
-        .catch((err)=> console.log(err));
-
-    }
+    
 
     const handleLearnerUpdate = (updatedLearner) => {
         setIsEditing(false);

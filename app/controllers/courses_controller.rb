@@ -24,14 +24,17 @@ skip_before_action :confirm_authentication
 
 # "/courses/:id"
   def update
-    @course.update(course_params)
-      render json: @course, status: :accepted
+    course = Course.find(params[:id])
+    course.update!(course_params)
+    render json: learner, status: :accepted
     
   end
 
     #DELETE course "/courses/:id"
     def destroy
-        @course.destroy
+        course = Course.find(params[:id])
+        course.destroy
+        head :no_content
     end
     
 

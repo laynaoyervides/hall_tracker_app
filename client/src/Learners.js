@@ -36,6 +36,19 @@ function Learners () {
             learner.id !== id);
         setLearners(updatedLearners);
     } */
+    function handleDelete (id) {
+        //        deleteLearner(id);
+                fetch(`/learners/${id}` , {
+                    method: "DELETE",
+                })
+                .then((r) => {
+                    if (r.ok) {
+                        setLearners(learners.filter((learner)=> learner.id !==id));
+                    }
+                })
+                .catch((err)=> console.log(err));
+        
+            }
 
     return (
         <div>
@@ -62,7 +75,7 @@ Learner Dashboard
                 key={learner.id}
                 learnerName = {learner.name}
                 onUpdateLearner={handleUpdateLearner} 
-                // deleteLearner={deleteLearner}    
+                handleDelete={handleDelete}    
                 learner={learner}           
                 />
 

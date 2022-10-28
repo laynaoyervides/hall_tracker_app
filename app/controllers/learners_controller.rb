@@ -18,12 +18,9 @@ before_action :authorize_instructor
 
 # POST /learners
    def create
-       learner = Learner.new(learner_params)
-       if @learner.save
-       render json: @learner, status: :created
-       else
-        render json: @learner.errors, status: :unprocessable_entity
-       end
+       learner = Learner.create!(learner_params)
+       render json: learner, status: :created
+       
    
    end
 # PATCH/PUT /learners/1
