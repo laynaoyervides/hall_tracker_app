@@ -10,7 +10,7 @@ skip_before_action :confirm_authentication
         end
 
 #"/courses/:id" GET courses/1
-    def show            
+    def show          
         render json: @course
     end
 
@@ -18,6 +18,8 @@ skip_before_action :confirm_authentication
     def create
       course = Course.create!(course_params)
       render json: course, status: :created
+    rescue ActiveRecord::RecordInvalid => e
+      render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
 
     
   end

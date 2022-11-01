@@ -6,6 +6,9 @@ function NewCourse ({addNewCourse, instructor}) {
     const [course_name, setCourse_name] = useState("")
     const [class_period, setClass_period] = useState("")
 
+    const [errors, setErrors] = useState([]);
+
+
 /*  const newCourse = {
         course_name: course_name,
                 class_period: class_period,
@@ -32,8 +35,12 @@ function NewCourse ({addNewCourse, instructor}) {
         e.preventDefault();
 
         fetch("/courses", configObj)
-        .then ((resp) => resp.json())
-        .then ((newCourse) => {addNewCourse(newCourse)
+        .then ((resp) => {
+            if (resp.ok){
+                resp.json().then((newCourse) => addNewCourse(newCourse));
+            } else {
+                resp.json().then((errorData)=> setErrors(errorData.errors));
+            }
         });
     };
 
@@ -65,6 +72,14 @@ function NewCourse ({addNewCourse, instructor}) {
                     onChange={(e)=> setClass_period(e.target.value)}
                     />
                <br></br>
+               {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
+      
         <Button type="submit" variant="contained" sx={{marginTop:"15px", backgroundColor:"#82f7ff"}}>Create Course</Button>
         </form>
         </Box>

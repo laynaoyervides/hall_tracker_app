@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import CourseList from "./CourseList";
+import LearnerList from "./LearnerList";
 import {Box, FormControl, InputLabel, Select, Typography} from '@mui/material'
 
 function Enrollments () {
 
+ /*    const [enrollmentData, setEnrollmentData]=useState({
+        course_id: course.id,
+        learner_id: learner.id
+    }) */
     const [courses, setCourses]=useState([]);
+    const [learners, setLearners]=useState([]);
+    
+    //const [course_id, setCourse_id] =useState();
+    //write a code for posting a newEnrollment
+    //const addNewEnrollment= (enrollment) => {
+       // setEnrollments([...enrollments, enrollment]);
+    //}
 
     useEffect (
         () => {
@@ -13,7 +25,46 @@ function Enrollments () {
             .then((courses)=> setCourses(courses));
         }, []);
 
-    return (
+        useEffect (
+            () => {
+                fetch(`/learners`)
+                .then((resp) => resp.json())
+                .then((learner)=> setLearners(learner));
+            }, []);
+
+/* const handleChange = (e)=> {
+    setEnrollmentData({
+        ...enrollmentData, [e.target.name]:e.target.value,
+    })
+}
+const enrollData = {...enrollmentData};
+
+const configObj = {
+    metnod: "POST",
+    headers:{
+        "Content-Type" : "application/json",
+    },
+    body: JSON.stringify(enrollData)
+}
+
+function handleSubmit(e) {
+    e.preventDefault();
+
+    fetch("/enrollments", configObj)
+    .then ((r) => {
+        if (r.ok) {
+            r.json() .then((enrollment) => {setEnrollmentData(enrollment);
+        });
+    }
+        else{
+            r.json().then((errors)=>{
+                console.error(errors)
+            });
+        }
+    });
+}
+ */
+return (
         <div>
             <Box                     
                marginTop={15}
@@ -33,17 +84,38 @@ function Enrollments () {
             <div > 
                 <Typography variant="h4" textAlign="center">Enroll students in your courses by choosing your course and adding students</Typography>
                 <div > 
-                    <FormControl>
-                <Select>
-                   <InputLabel>Courses</InputLabel>
-                   {courses.map((course)=>
-                    <CourseList 
-                    key={course.id}
-                    course={course}
-                    courseName = {course.course_name}
-                    classPeriod={course.class_period}
-                    />
-                    
+                <FormControl fullWidth>
+                 <InputLabel>Choose Your Course</InputLabel>
+                    <Select
+                        labelId="course_selection_label"
+                        id="course_select"
+                        value={courses}
+                        label="Courses"
+                    //    onChange={handleChange}
+                    >
+                        {courses.map((course)=>
+                        <CourseList 
+                         key={course.id}
+                         course={course}
+                         courseName = {course.course_name}
+                         classPeriod={course.class_period}     
+                        />
+
+                   )}
+                   </Select>
+{/* //LearnerList */}<br></br>
+                    </FormControl>
+
+                   <FormControl fullWidth>
+                   <InputLabel>Choose A Learner</InputLabel>
+                   <Select>
+                        {learners.map((learner)=>
+                        <LearnerList 
+                        learner={learner}
+                         key={learner.id}
+                         name={learner.name} 
+                        // onChange={handleChange}    
+                        />
 
                    )}
                    </Select>
@@ -54,5 +126,5 @@ function Enrollments () {
             </Box>      
         </div>
     )
-}
+                        }
 export default Enrollments

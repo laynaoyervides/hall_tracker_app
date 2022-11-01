@@ -2,8 +2,9 @@ class LearnersController < ApplicationController
   
 
 before_action :confirm_authentication
-before_action :authorize_instructor
-    #before_action :set_learner
+before_action :authorize_instructor, only: [:update, :destroy, :create]
+    
+#before_action :set_learner
 
    # GET /learners
    def index
@@ -20,6 +21,8 @@ before_action :authorize_instructor
    def create
        learner = Learner.create!(learner_params)
        render json: learner, status: :created
+      rescue ActiveRecord::RecordInvalid => e
+        render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
        
    
    end

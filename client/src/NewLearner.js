@@ -2,6 +2,8 @@ import { Typography, Button } from "@mui/material";
 import React, {useState} from "react";
 
 function NewLearner ({addNewLearner}) {
+    const [errors, setErrors] = useState([]);
+
     const [name, setName] = useState("")
 
     const NewLearner ={
@@ -21,10 +23,14 @@ function NewLearner ({addNewLearner}) {
         e.preventDefault();
 
         fetch("/learners", configObj)
-        .then ((resp) => resp.json())
-        .then ((learner) => {addNewLearner(learner)
-        });
-    };
+        .then ((resp) => {
+        if (resp.ok){
+            resp.json().then((newLearner) => addNewLearner(newLearner));
+        } else {
+            resp.json().then((errorData)=> setErrors(errorData.errors));
+        }
+    });
+};
     return(
         <div>
             <Typography variant="h6" sx={{marginTop: "10px"}}>ADD A NEW LEARNER</Typography>
@@ -42,6 +48,14 @@ function NewLearner ({addNewLearner}) {
                     onChange={(e) => setName(e.target.value)}
                     paddingLeft={10}
                                         />
+               
+               {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
                 <Button variant="contained" color="secondary" type="submit" sx={{marginLeft:"10px"}}>Create Learner</Button>
                 </form>
 

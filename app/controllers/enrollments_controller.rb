@@ -14,14 +14,14 @@ def show
 
 # POST /enrollments
 def create
-    enrollment = Enrollments.create!(enrollments_params)
+    enrollment = Enrollments.create!(enrollment_params)
     render json: enrollment, status: accepted
    
 
 end
 # PATCH/PUT /enrollments/1
 def update
-if @enrollment.update(learner_params)
+if @enrollment.update(enrollment_params)
   render json: @enrollment
 else
   render json: @enrollment.errors, status: :unprocessable_entity
@@ -40,8 +40,8 @@ def set_enrollment
 end
 
 # Only allow a list of trusted parameters through.
-def learner_params
-  params.permit(:course_id, :instructor_id)
+def enrollment_params
+  params.permit(:course_id, :learner_id)
 end
 
 end

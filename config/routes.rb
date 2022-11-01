@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   
   # Defines the root path route ("/")
+#  get "/courses/:id", to: "courses#show"
 
   # root "articles#index"
   get "/me", to: "instructors#show"
