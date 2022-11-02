@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
 
 skip_before_action :confirm_authentication
-
+#before_action :set_course
 
 #"/courses"
         def index
@@ -10,8 +10,9 @@ skip_before_action :confirm_authentication
         end
 
 #"/courses/:id" GET courses/1
-    def show          
-        render json: @course
+    def show     
+      @course = Course.find(params[:id])     
+        render json: @course, include: ['learners']
     end
 
 #POST course "/courses"
@@ -45,9 +46,7 @@ skip_before_action :confirm_authentication
       params.permit(:course_name, :class_period, :instructor_id)
     end
 
-    def set_course
-      @course = Course.find(params[:id])
-    end
+    
 
     def authorize_instructor
       instructor_can_modify = @course.instructor_id === @current_instructor.id

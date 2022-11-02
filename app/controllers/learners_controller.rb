@@ -1,6 +1,6 @@
 class LearnersController < ApplicationController
   
-
+#before_action :set_learner
 before_action :confirm_authentication
 before_action :authorize_instructor, only: [:update, :destroy, :create]
     
@@ -14,6 +14,7 @@ before_action :authorize_instructor, only: [:update, :destroy, :create]
 
    # GET /learners/1
    def show
+       @learner = Learner.find(params[:id])
        render json: @learner
      end
 
@@ -47,10 +48,6 @@ before_action :authorize_instructor, only: [:update, :destroy, :create]
    # Only allow a list of trusted parameters through.
    def learner_params
      params.permit(:name, :admin)
-   end
-
-   def set_learner
-    @learner = Learner.find(params[:id])
    end
 
    def authorize_instructor

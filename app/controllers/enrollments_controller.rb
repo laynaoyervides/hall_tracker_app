@@ -1,5 +1,6 @@
 class EnrollmentsController < ApplicationController
     skip_before_action :confirm_authentication
+    before_action :set_enrollment
 
     # GET /enrollments
    def index
@@ -14,7 +15,7 @@ def show
 
 # POST /enrollments
 def create
-    enrollment = Enrollments.create!(enrollment_params)
+    enrollment = Enrollment.create!(enrollment_params)
     render json: enrollment, status: accepted
    
 

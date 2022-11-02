@@ -18,6 +18,10 @@ function Activity () {
                >
         
         <Typography variant="h1" textAlign="center">Activity</Typography>
+        <Typography variant="h2" textAlign="center">Choose your course to start tracking activity</Typography>
+
+
+
         </Box> 
         </div>
     )

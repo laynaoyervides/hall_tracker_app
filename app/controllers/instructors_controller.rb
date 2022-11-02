@@ -1,21 +1,22 @@
 class InstructorsController < ApplicationController
 skip_before_action :confirm_authentication
     
-    
+ #get all instructors list
+ def index
+    @instructors = Instructor.all
+    render json: @instructors, include: ['courses', 'courses.learners']
+   end    
+
     #get '/me'
     def show
         if current_instructor
-            render json: current_instructor, status: :created
+            render json: current_instructor , include: ['courses', 'courses.learners']
         else
             render json: { error: 'No active session'}, status: :unauthorized
         end
     end
 
-    #get all instructors list
-    def index
-        @instructors = Instructor.all
-        render json: @instructors
-       end
+   
 
    
 
@@ -33,6 +34,6 @@ skip_before_action :confirm_authentication
     private
 
     def instructor_params
-        params.permit(:instructor, :username, :email, :password, :password_confirmation)
+        params.permit(:username, :email, :password, :password_confirmation)
     end
 end

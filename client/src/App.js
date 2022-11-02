@@ -71,7 +71,7 @@ if (!instructor) return (
             <Route path='/courses' element={<Courses instructor={instructor} />} />
             <Route path="/enrollments" element={<Enrollments />} />
             <Route path="/learners" element={<Learners />} />
-            <Route path="/activity" element={<Activity/>} />
+            <Route path="/activity" element={<Activity instructor={instructor}/>} />
 
             <Route path="*" element={<h1>404 not found</h1>}/>
         </Routes>
