@@ -32,7 +32,7 @@ function CourseList ({course}) {
                   name={learners.name}
               />
           )}
-        />
+        
 
         </Card>
         

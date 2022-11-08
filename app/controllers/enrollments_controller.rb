@@ -1,5 +1,4 @@
 class EnrollmentsController < ApplicationController
-    skip_before_action :confirm_authentication
     before_action :set_enrollment
 
     # GET /enrollments

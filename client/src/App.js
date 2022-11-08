@@ -70,6 +70,7 @@ if (!instructor) return (
             <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
             <Route path='/courses' element={<Courses instructor={instructor} />} />
             <Route path="/enrollments" element={<Enrollments />} />
+            
             <Route path="/learners" element={<Learners />} />
             <Route path="/activity" element={<Activity instructor={instructor}/>} />
 

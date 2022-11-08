@@ -1,8 +1,5 @@
 class CoursesController < ApplicationController
 
-skip_before_action :confirm_authentication
-#before_action :set_course
-
 #"/courses"
         def index
          @courses = Course.all

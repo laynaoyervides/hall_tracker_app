@@ -1,6 +1,5 @@
 class LearnersController < ApplicationController
   
-#before_action :set_learner
 before_action :confirm_authentication
 before_action :authorize_instructor, only: [:update, :destroy, :create]
     
