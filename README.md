@@ -62,7 +62,7 @@ clone the project repository from github: https://github.com/laynaoyervides/hall
 
 $ git clone https://github.com/laynaoyervides/hall-tracker-app
 
-###Install the Latest Ruby Version
+### Install the Latest Ruby Version
 Verify which version of Ruby you're running by entering this in the terminal:
 
 ruby -v
@@ -100,7 +100,7 @@ If you see the output above, you have a working version of sqlite3 already insta
 
 If not, then there are a couple of ways you can install SQLite.
 
-###OSX: Install With Homebrew
+### OSX: Install With Homebrew
 You can install SQLite using Homebrew, which you should have installed as part of your Flatiron environment setup. Install SQLite with:
 
  brew install sqlite
@@ -109,7 +109,7 @@ If Homebrew isn't working out for you, you can download one of the pre-compiled 
 
 Note: If you are receiving an error when trying to install SQLite, make sure the Xcode Command-Line Tools have properly installed. Try running xcode-select --install to resolve this issue.
 
-###Installing SQLite in WSL
+### Installing SQLite in WSL
 Below are the steps for installing SQLite on the Windows Sub-system for Linux:
 
 Open your WSL terminal
@@ -118,7 +118,7 @@ Once the packages have updated, install SQLite3 with: sudo apt install sqlite3
 Confirm installation and get the version number: sqlite3 --version
 For additional information, check out this article on getting started with databases in WSL
 
-###Application Install
+### Application Install
 When you're ready to start building your project, run:
 
 bundle install
@@ -131,7 +131,7 @@ rails db:migrate db:seed: migrate and seed the database (use db:seed:replant if 
 rails s: run the backend on http://localhost:3000
 npm start --prefix client: run the frontend on http://localhost:4000
 
-###Backend Shutdown
+### Backend Shutdown
 It should be possible to shutdown the server using [CTRL-C]. If that fails, follow these steps:
 
 lsof -i tcp:9292 response: COMMAND PID USER .... ruby 1234 root ....
