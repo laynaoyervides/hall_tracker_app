@@ -57,15 +57,19 @@ Bud reports and pull requests are welcome on Github
 Contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 ## Environment Setup
-Clone repository
-clone the project repository from github: https://github.com/laynaoyervides/hall-tracker-app
 
+Clone repository
+**clone** the project repository from github: https://github.com/laynaoyervides/hall-tracker-app
+
+```console
 $ git clone https://github.com/laynaoyervides/hall-tracker-app
+```
 
 ### Install the Latest Ruby Version
 Verify which version of Ruby you're running by entering this in the terminal:
-
+```sh
 ruby -v
+```
 Make sure that the Ruby version you're running is listed in the supported runtimes by Heroku. At the time of writing, supported versions are 2.6.8, 2.7.4, or 3.0.2. Our recommendation is 2.7.4, but make sure to check the site for the latest supported versions.
 
 If it's not, you can use rvm to install a newer version of Ruby:
