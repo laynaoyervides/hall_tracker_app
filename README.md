@@ -143,10 +143,10 @@ lsof -i tcp:9292 response: COMMAND PID USER .... ruby 1234 root ....
 kill -9 1234
 
 ### Resources  
-create-react-app thinking in react material UI
+Thinking in REACT : (https://reactjs.org/docs/thinking-in-react.html)
 
 A view of the MVP can be seen here:
-https://www.loom.com/share/dbd98a00f1fe4dcea7a9b03c4c674626
+https://www.loom.com/share/61be00d04ee34b8abc8df987a1e998dc
 
 More information about the process on Medium:
 https://medium.com/@laynaoyervides/bespoke-hall-pass-app-with-rails-api-aa188c3ddd00 
