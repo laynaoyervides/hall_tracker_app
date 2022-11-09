@@ -62,7 +62,7 @@ clone the project repository from github: https://github.com/laynaoyervides/hall
 
 $ git clone https://github.com/laynaoyervides/hall-tracker-app
 
-nstall the Latest Ruby Version
+Install the Latest Ruby Version
 Verify which version of Ruby you're running by entering this in the terminal:
 
 ruby -v
