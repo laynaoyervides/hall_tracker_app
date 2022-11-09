@@ -25,7 +25,8 @@ For this project, I -Used Active Record to interact with a database. -Have an In
 -A separate React front-end application that interacts with the API to perform CRUD actions.
 
 ## The following Routes are used:
-`courses GET    /courses(.:format)                                                                                                            courses#index
+```console
+courses GET    /courses(.:format)                                                                                                            courses#index
                                         POST   /courses(.:format)                                                                              courses#create
                             course GET    /courses/:id(.:format)                                                                            courses#show
                                          PATCH  /courses/:id(.:format)                                                                            courses#update
@@ -48,7 +49,7 @@ For this project, I -Used Active Record to interact with a database. -Have an In
                                 login POST   /login(.:format)                                                                                  sessions#create
                               logout DELETE /logout(.:format)                                                                                 sessions#destroy
                        instructors GET    /instructors(.:format)                                                                            instructors#index`
-
+```
 
 ## Contributing 
 Bud reports and pull requests are welcome on Github 
