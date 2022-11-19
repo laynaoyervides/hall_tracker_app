@@ -14,18 +14,23 @@ After checking out the repo, run bundle install to install Ruby gem dependencies
 
 ## Requirements 
 
-For this project, I -Used Active Record to interact with a database. -Have an Instructor model with a one-to-many relationship, a Course model with one many to many relationship with a Learner model, using Enrollments as a join table. There will be several other one to many relationships that belong to the Learner model. 
+For this project, I 
+-Used Active Record to interact with a database. 
 
--API routes in Rails that are set up so that: -full CRUD for Learner, Courses, and Enrollments model
+-Have an Instructor model with a one-to-many relationship, a Course model with one many to many relationship with a Learner model, using Enrollments as a join table. There will be several other one to many relationships that belong to the Learner model. 
 
--Authentication - Instructors can login and view learners, create/edit/delete enrollments, view/create/edit/delete courses
+-API routes in Rails that are set up so that: 
+-full CRUD for Learner, Courses, and Enrollments model
+
+-Authentication - Instructors can login and view learners in their courses, view/create/edit/delete their courses
 
 -Authorization - Admin (who are also instructors) can login, view/create/edit/delete learners, courses, and enrollments.
 
 -A separate React front-end application that interacts with the API to perform CRUD actions.
 
 ## The following Routes are used:
-`courses GET    /courses(.:format)                                                                                                            courses#index
+```console
+courses GET    /courses(.:format)                                                                                                            courses#index
                                         POST   /courses(.:format)                                                                              courses#create
                             course GET    /courses/:id(.:format)                                                                            courses#show
                                          PATCH  /courses/:id(.:format)                                                                            courses#update
@@ -49,7 +54,7 @@ For this project, I -Used Active Record to interact with a database. -Have an In
                               logout DELETE /logout(.:format)                                                                                 sessions#destroy
                        instructors GET    /instructors(.:format)                                                                            instructors#index`
 
-
+```
 ## Contributing 
 Bud reports and pull requests are welcome on Github 
 @https:..github.com/laynaoyervides/hall-pass-app
