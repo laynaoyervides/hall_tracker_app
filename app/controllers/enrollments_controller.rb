@@ -1,6 +1,9 @@
 class EnrollmentsController < ApplicationController
     before_action :find_enrollment, only: [:show, :update, :destroy]
     before_action :is_admin?
+
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # GET /enrollments
    def index
     render json: Enrollment.all, status: :ok
@@ -43,6 +46,14 @@ private
   def is_admin?
     permitted = current_instructor.admin?
     render json: { error: "Only admin have permission to perform this action" }, status: :forbidden unless permitted
+  end
+
+  def render_unprocessable_entity_response(invalid)
+    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
+
+  def render_not_found(error)
+    render json: {errors: {error.model => "Not Found"}}, status: :not_found
   end
 
 end

@@ -3,8 +3,8 @@ class LearnersController < ApplicationController
 before_action :confirm_authentication
 before_action :authorize_instructor, only: [:update, :destroy, :create]
     
-#before_action :set_learner
-
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
    # GET /learners
    def index
        @learners = Learner.all
@@ -42,8 +42,6 @@ before_action :authorize_instructor, only: [:update, :destroy, :create]
 
  private
    # Use callbacks to share common setup or constraints between actions.
-  
-
    # Only allow a list of trusted parameters through.
    def learner_params
      params.permit(:name, :admin)
@@ -52,6 +50,14 @@ before_action :authorize_instructor, only: [:update, :destroy, :create]
    def authorize_instructor
       instructor_can_modify = current_instructor.admin?
       render json: { error: "You don't have permission to perform this action" }, status: :forbidden unless instructor_can_modify
+  end
+
+  def render_unprocessable_entity_response(invalid)
+    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    end
+
+  def render_not_found(error)
+    render json: {errors: {error.model => "Not Found"}}, status: :not_found
   end
 
 end

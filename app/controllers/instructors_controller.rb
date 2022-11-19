@@ -15,9 +15,6 @@ skip_before_action :confirm_authentication, only: :create
             render json: { error: 'No active session'}, status: :unauthorized
         end
     end
-
-   
-
    
 
     #post /signup
