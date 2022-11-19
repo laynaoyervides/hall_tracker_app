@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CourseList from "./CourseList";
+import CourseSelect from "./CourseSelect";
 import LearnerList from "./LearnerList";
 import {Box, FormControl, InputLabel, Select, Typography} from '@mui/material'
 
@@ -94,7 +94,7 @@ return (
                     //    onChange={handleChange}
                     >
                         {courses.map((course)=>
-                        <CourseList 
+                        <CourseSelect
                          key={course.id}
                          course={course}
                          courseName = {course.course_name}

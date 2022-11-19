@@ -1,14 +1,14 @@
 class CoursesController < ApplicationController
-
+#before_action :authorize_instructor
+before_action :find_course, only: [:show, :update, :destroy]
+before_action :is_creator?, only: [:update, :destroy]
 #"/courses"
-        def index
-         @courses = Course.all
-         render json: @courses
+    def index
+         render json: Course.all, status: :ok
         end
 
 #"/courses/:id" GET courses/1
     def show     
-      @course = Course.find(params[:id])     
         render json: @course, include: ['learners']
     end
 
@@ -24,16 +24,14 @@ class CoursesController < ApplicationController
 
 # "/courses/:id"
   def update
-    course = Course.find(params[:id])
-    course.update!(course_params)
-    render json: course, status: :accepted
+    @course.update!(course_params)
+    render json: @course, status: :accepted
     
   end
 
     #DELETE course "/courses/:id"
     def destroy
-        course = Course.find(params[:id])
-        course.destroy
+        @course.destroy
         head :no_content
     end
     
@@ -43,11 +41,14 @@ class CoursesController < ApplicationController
       params.permit(:course_name, :class_period, :instructor_id)
     end
 
-    
-
-    def authorize_instructor
-      instructor_can_modify = @course.instructor_id === @current_instructor.id
-      render json: { error: "You don't have permission to perform this action" }, status: :forbidden unless instructor_can_modify
+    #extract repetitive code where we're finding the course and creating an instance variable
+    def find_course
+      @course = Course.find(params[:id])
     end
+
+   def is_creator?
+      permitted = @course.instructor_id === current_instructor.id 
+      render json: {errors: {Instructor: "did not create this course"}}, status: :forbidden unless permitted
+   end
 
 end
