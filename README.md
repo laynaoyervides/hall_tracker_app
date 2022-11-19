@@ -15,6 +15,7 @@ After checking out the repo, run bundle install to install Ruby gem dependencies
 ## Requirements 
 
 For this project, I 
+
 -Used Active Record to interact with a database. 
 
 -Have an Instructor model with a one-to-many relationship, a Course model with one many to many relationship with a Learner model, using Enrollments as a join table. There will be several other one to many relationships that belong to the Learner model. 
