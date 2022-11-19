@@ -1,5 +1,5 @@
 class InstructorsController < ApplicationController
-skip_before_action :confirm_authentication
+skip_before_action :confirm_authentication, only: :create
     
  #get all instructors list
  def index
