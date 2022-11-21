@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import CourseSelect from "./CourseSelect";
 import LearnerList from "./LearnerList";
 import {Box, FormControl, InputLabel, Select, Typography} from '@mui/material'
+import EnrollmentsView from "./EnrollmentsView";
+import NewEnrollment from "./NewEnrollment";
 
 function Enrollments () {
 
@@ -11,6 +13,7 @@ function Enrollments () {
     }) */
     const [courses, setCourses]=useState([]);
     const [learners, setLearners]=useState([]);
+    const [enrollments, setEnrollments] =useState([]);
     
     //const [course_id, setCourse_id] =useState();
     //write a code for posting a newEnrollment
@@ -18,19 +21,29 @@ function Enrollments () {
        // setEnrollments([...enrollments, enrollment]);
     //}
 
+    //get list of courses
     useEffect (
         () => {
             fetch(`/courses`)
             .then((resp) => resp.json())
             .then((courses)=> setCourses(courses));
         }, []);
-
-        useEffect (
+    //get list of learners
+    useEffect (
             () => {
                 fetch(`/learners`)
                 .then((resp) => resp.json())
                 .then((learner)=> setLearners(learner));
             }, []);
+
+ //get list of enrollments
+    useEffect (
+                () => {
+                    fetch(`/enrollments`)
+                    .then((resp) => resp.json())
+                    .then((enrollments)=> setEnrollments(enrollments));
+                }, []);
+        
 
 /* const handleChange = (e)=> {
     setEnrollmentData({
@@ -64,6 +77,11 @@ function handleSubmit(e) {
     });
 }
  */
+
+const addNewEnrollment= (enrollment) => {
+    setEnrollments([...enrollments, enrollment]);
+}
+
 return (
         <div>
             <Box                     
@@ -123,7 +141,40 @@ return (
                 </div>
                 
             </div>  
-            </Box>      
+            </Box>   
+{/* Create an Enrollment */}
+            <Box
+                 marginTop={15}
+                 padding={15}
+                 backgroundColor={"#ffff72"}
+                 borderRadius={5}
+                 boxShadow={'5px 5px 10px #000'}
+            >
+            <Typography variant="h3">Enroll a student</Typography>    
+           <NewEnrollment addNewEnrollment={addNewEnrollment}/>
+            </Box>   
+            <Box
+            marginTop={15}
+            padding={15}
+            display="grid" 
+            flexDirection={'row'}
+            gridTemplateColumns= 'repeat(5, 1fr)'
+             alignItems={"left"}
+             justifyContent={"center"}
+             backgroundColor={"#ffff72"}
+             borderRadius={5}
+             boxShadow={'5px 5px 10px #000'}
+            >
+               This box is for the list of enrollments
+                {
+                    enrollments.map((enrollment)=> 
+                        <EnrollmentsView 
+                            course={enrollment.course_id}
+                            learner = {enrollment.learner_id}
+                        />
+                    )
+                }
+            </Box>
         </div>
     )
                         }

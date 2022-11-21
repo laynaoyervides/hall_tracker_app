@@ -9,12 +9,6 @@ function NewCourse ({addNewCourse, instructor}) {
     const [errors, setErrors] = useState([]);
 
 
-/*  const newCourse = {
-        course_name: course_name,
-                class_period: class_period,
-                instructor_id: instructor.id  */      
-//    }
-
     const configObj = {
         method: "POST",
         headers: {
