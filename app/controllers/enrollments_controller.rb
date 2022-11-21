@@ -9,6 +9,14 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     render json: Enrollment.all, status: :ok
     end
 
+    #def index
+    # if params[:searchterm]
+    #@enrollments = Enrollment.find_enrollment_by_course(params[:searchterm])
+    #else
+    #render json: Enrollment.all, status: :ok
+    #end
+    #end
+
 # GET /enrollments/1
     def show
       render json: @enrollment, status: :ok

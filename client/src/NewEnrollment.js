@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 function NewEnrollment ({addNewEnrollment}) {
     const [courseId, setCourseId]= useState("");
     const [learnerId, setLearnerId] = useState("");
+    const [semester, setSemester] = useState("");
     
     const[errors, setErrors] = useState([])
 
@@ -16,7 +17,8 @@ function NewEnrollment ({addNewEnrollment}) {
         body: JSON.stringify(
             {
             course_id: courseId, 
-            learner_id: learnerId
+            learner_id: learnerId,
+            semester: semester
             }
         )
     };
@@ -57,6 +59,15 @@ function NewEnrollment ({addNewEnrollment}) {
                     value={learnerId}
                     onChange={(e)=>setLearnerId(e.target.value)}
                     />
+                     <Typography variant='h4'>Semester</Typography>
+                     <input
+                        id="semester"
+                        type="text"
+                        placeholder="Semester"
+                        name="semester"
+                        value={semester}
+                        onChange={(e)=>setSemester(e.target.value)}
+                     />
                 <br></br>
                     {errors.length > 0 && (
                         <ul style={{ color: "red" }}>

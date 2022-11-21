@@ -22,6 +22,7 @@ skip_before_action :confirm_authentication, only: :create
         instructor = Instructor.create(instructor_params)
         if instructor.valid?
             session[:instructor_id] = instructor.id
+            #above is us remembering who our user is
             render json: instructor, status: :ok
         else
             render json: {error: instructor.errors.full_messages }, status: :unprocessable_entity

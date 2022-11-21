@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from "react";
 import CourseSelect from "./CourseSelect";
 import LearnerList from "./LearnerList";
-import {Box, FormControl, InputLabel, Select, Typography} from '@mui/material'
+import {Box, FormControl, InputLabel, Select, Typography, Button} from '@mui/material'
 import EnrollmentsView from "./EnrollmentsView";
 import NewEnrollment from "./NewEnrollment";
 
 function Enrollments () {
 
- /*    const [enrollmentData, setEnrollmentData]=useState({
-        course_id: course.id,
-        learner_id: learner.id
-    }) */
+
     const [courses, setCourses]=useState([]);
     const [learners, setLearners]=useState([]);
     const [enrollments, setEnrollments] =useState([]);
     
-    //const [course_id, setCourse_id] =useState();
-    //write a code for posting a newEnrollment
-    //const addNewEnrollment= (enrollment) => {
-       // setEnrollments([...enrollments, enrollment]);
-    //}
-
+    
+   
     //get list of courses
     useEffect (
         () => {
@@ -166,11 +159,19 @@ return (
              boxShadow={'5px 5px 10px #000'}
             >
                This box is for the list of enrollments
+              {/*  <Typography>Search for Enrollments by CourseID</Typography>
+               <form>
+                <label>CourseID</label>
+                <input></input>
+                <Button type="submit">SEARCH</Button>
+               </form> */}
+               
                 {
                     enrollments.map((enrollment)=> 
                         <EnrollmentsView 
                             course={enrollment.course_id}
                             learner = {enrollment.learner_id}
+                            semester = {enrollment.semester}
                         />
                     )
                 }

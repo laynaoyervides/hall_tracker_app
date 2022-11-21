@@ -37,8 +37,10 @@ module HallTrackerApp
     config.api_only = true
     #have to add back the lines for the middleware for cookies because the api settings delete them
     config.middleware.use ActionDispatch::Cookies
+    #make sessions accessible throughout application so we can set sessions and share cookies across the web
     config.middleware.use ActionDispatch::Session::CookieStore
     # Use SameSite=Strict for all cookies to help protect against CSRF
+    #This makes sure that we're being strict about how our cookies are shared-- we are only sharing them if the domain request is the same 
     config.action_dispatch.cookies_same_site_protection = :strict
   end
 end
