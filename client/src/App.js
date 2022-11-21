@@ -53,8 +53,29 @@ if (!instructor) return (
     <Landing onLogin={setInstructor} />
   </div>)
 
+if (instructor.admin) return(
+  <div
+  style={{
+    minHeight: '100vh',
+    backgroundSize: 'cover',
+    backgroundColor: "#40c4ff", 
+    padding: "100px"}}
+  >
+  <ThemeProvider theme={theme}>
+    <NavBar instructor={instructor} setInstructor={setInstructor}/>
+    <Routes>
+        <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
+        <Route path='/courses' element={<Courses instructor={instructor} />} />
+        <Route path="/enrollments" element={<Enrollments />} />
+      
+        <Route path="/learners" element={<Learners />} />
+        <Route path="/activity" element={<Activity instructor={instructor}/>} />
 
-
+        <Route path="*" element={<h1>404 not found</h1>}/>
+    </Routes>
+</ThemeProvider>
+</div>
+)
 
   return (
       <div
@@ -69,9 +90,8 @@ if (!instructor) return (
         <Routes>
             <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
             <Route path='/courses' element={<Courses instructor={instructor} />} />
-            <Route path="/enrollments" element={<Enrollments />} />
-            
-            <Route path="/learners" element={<Learners />} />
+           {/*  <Route path="/enrollments" element={<Enrollments />} />
+            <Route path="/learners" element={<Learners />} /> */}
             <Route path="/activity" element={<Activity instructor={instructor}/>} />
 
             <Route path="*" element={<h1>404 not found</h1>}/>
