@@ -11,7 +11,11 @@ function Enrollments () {
     const [courses, setCourses]=useState([]);
     const [learners, setLearners]=useState([]);
     const [enrollments, setEnrollments] =useState([]);
-    
+    //set selected course and learner in state
+
+    const[selectedCourse, setSelectedCourse]=useState()
+    const[selectedLearner, setSelectedLearner]=useState()
+
     
    
     //get list of courses
@@ -38,38 +42,19 @@ function Enrollments () {
                 }, []);
         
 
-/* const handleChange = (e)=> {
-    setEnrollmentData({
-        ...enrollmentData, [e.target.name]:e.target.value,
-    })
-}
-const enrollData = {...enrollmentData};
-
-const configObj = {
-    metnod: "POST",
-    headers:{
-        "Content-Type" : "application/json",
-    },
-    body: JSON.stringify(enrollData)
-}
-
-function handleSubmit(e) {
+//pass down a click handler
+function handleCourseSelection(e){
     e.preventDefault();
-
-    fetch("/enrollments", configObj)
-    .then ((r) => {
-        if (r.ok) {
-            r.json() .then((enrollment) => {setEnrollmentData(enrollment);
-        });
-    }
-        else{
-            r.json().then((errors)=>{
-                console.error(errors)
-            });
-        }
-    });
+    setSelectedCourse(e.target.value)
+    console.log(selectedCourse)
 }
- */
+//pass down another handler
+
+function handleLearnerSelection(e){
+    e.preventDefault();
+    setSelectedLearner(e.target.value)
+    console.log(selectedLearner)
+}
 
 const addNewEnrollment= (enrollment) => {
     setEnrollments([...enrollments, enrollment]);
@@ -93,43 +78,46 @@ return (
         <Typography variant="h1" textAlign="center">Enrollments</Typography>
             <br></br>
             <div > 
-                <Typography variant="h4" textAlign="center">Enroll students in your courses by choosing your course and adding students</Typography>
+                <Typography variant="h4" textAlign="center">Admin: Enroll learners in courses by choosing the course and adding learners</Typography>
                 <div > 
                 <FormControl fullWidth>
                  <InputLabel>Choose Your Course</InputLabel>
                     <Select
                         labelId="course_selection_label"
                         id="course_select"
-                        value={courses}
                         label="Courses"
-                    //    onChange={handleChange}
+                        defaultValue=""
                     >
                         {courses.map((course)=>
                         <CourseSelect
                          key={course.id}
                          course={course}
-                         courseName = {course.course_name}
-                         classPeriod={course.class_period}     
+                         /* courseName = {course.course_name}
+                         classPeriod={course.class_period}  */
+                         handleClick={handleCourseSelection}    
                         />
 
                    )}
                    </Select>
-{/* //LearnerList */}<br></br>
+                   <Typography>You chose {selectedCourse}</Typography>
+                        <br></br>
                     </FormControl>
 
                    <FormControl fullWidth>
                    <InputLabel>Choose A Learner</InputLabel>
-                   <Select>
+                   <Select
+                    defaultValue=""
+                   >
                         {learners.map((learner)=>
                         <LearnerList 
                         learner={learner}
                          key={learner.id}
-                         name={learner.name} 
-                        // onChange={handleChange}    
+                        handleClick={handleLearnerSelection}    
                         />
 
                    )}
                    </Select>
+                   <Typography>You chose {selectedLearner}</Typography>
                    </FormControl>
                 </div>
                 
@@ -144,8 +132,11 @@ return (
                  boxShadow={'5px 5px 10px #000'}
             >
             <Typography variant="h3">Enroll a student</Typography>    
-           <NewEnrollment addNewEnrollment={addNewEnrollment}/>
+           <NewEnrollment 
+                addNewEnrollment={addNewEnrollment}                
+            />
             </Box>   
+            
             <Box
             marginTop={15}
             padding={15}
@@ -169,6 +160,7 @@ return (
                 {
                     enrollments.map((enrollment)=> 
                         <EnrollmentsView 
+                            key ={enrollment.id}
                             course={enrollment.course_id}
                             learner = {enrollment.learner_id}
                             semester = {enrollment.semester}

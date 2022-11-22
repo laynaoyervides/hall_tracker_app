@@ -7,16 +7,24 @@ function CourseCrud({instructor}) {
     const [courses, setCourses] = useState([]);
 
      //get list of courses
-     useEffect ( ()  => {
+   /*   useEffect ( ()  => {
         fetch("/courses")
         .then ((r) => r.json())
         .then ((coursesArray) => 
             setCourses(
             coursesArray.filter((course)=>course.instructor_id === instructor.id))
         );
-    }, [instructor.id]);
+    }, [instructor.id]); */
+
+  
+        fetch("/me")
+        .then ((r) => r.json())
+        .then ((coursesArray) => 
+            setCourses(
+            coursesArray.courses));
 
 
+ 
     // Add a new course - CREATE - 
     const addNewCourse= (course) => {
         setCourses([...courses, course]);

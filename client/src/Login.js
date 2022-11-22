@@ -35,7 +35,7 @@ Welcome Back!
                 <Box 
                 display ="flex" 
                 flexDirection={'column'} 
-                max width={400}
+                maxWidth={400}
                 alignItems="center"
                 justifyContent={"center"}
                 margin="auto"

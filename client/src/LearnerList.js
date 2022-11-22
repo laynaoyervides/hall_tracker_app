@@ -1,14 +1,17 @@
 import React from "react"
 import {MenuItem} from '@mui/material'
 
-function LearnerList ({learner}) {
+function LearnerList ({learner, handleClick}) {
 
-    const {name} = learner;
+//    const {name} = learner;
 
     return (
-        <MenuItem>
+        <MenuItem
+        onClick={handleClick}
+        value={learner.id}
+        >
 
-            <h3>{name}</h3>
+            <h3>{learner.name}</h3>
         </MenuItem>
     )
 }

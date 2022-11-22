@@ -1,15 +1,17 @@
 import React from "react";
-import {Typography} from '@mui/material'
+import {MenuItem, Typography} from '@mui/material'
 
-function CourseSelect ({course}) {
-    const {course_name, class_period} = course;
+function CourseSelect ({course, handleClick}) {
+    //const {course_name, class_period} = course;
 
     return(
-        <div>       
-
-            <Typography variant="h3">{course_name} </Typography>
-            <Typography variant="h6"> Class Period: {class_period}</Typography>
-        </div>
+        <MenuItem
+        onClick={handleClick}
+        value={course.id}
+        >       
+            Course: {course.course_name}, <br></br>
+            Class Period: {course.class_period}
+        </MenuItem>
     )
 }
 export default CourseSelect
