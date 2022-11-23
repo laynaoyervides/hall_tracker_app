@@ -10,8 +10,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
        @learners = Learner.all
        render json: @learners
      end
-#GET /searchlearners/q
+#GET /searchlearners?q=
      def search
+      #byebug
       @learners = Learner.where('name LIKE ?', "%" + params[:q] + "%")
       render json: @learners
      end
@@ -58,11 +59,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   end
 
   def render_unprocessable_entity_response(invalid)
-    render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
   def render_not_found(error)
-    render json: {errors: {error.model => "Not Found"}}, status: :not_found
+    render json: {message: error.message}, status: :not_found
   end
 
 end

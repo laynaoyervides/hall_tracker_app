@@ -1,19 +1,26 @@
 import React, {useState, useEffect} from "react";
 import LearnerDetail from './LearnerDetail'
 import NewLearner from './NewLearner'
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 
 function Learners () {
 
     const [learners, setLearners] = useState([])
+    //const [q, setQ] = useState('');
+    //const [results, setResults] = useState([])
 
     useEffect ( ()  => {
         fetch("/learners")
         .then ((r) => r.json())
         .then ((learners) => setLearners(learners));
     }, []);
-
-    // Add a new learner - CREATE - 
+//search learners
+/* function handleSearch(q) {
+    fetch(`/searchlearners/${q}`)
+    .then((r) => r.json())
+    .then((learners) => setResults(learners));
+}
+ */    // Add a new learner - CREATE - 
     const addNewLearner= (learner) => {
         setLearners([...learners, learner]);
     }
@@ -59,7 +66,26 @@ function Learners () {
                 <Typography variant="h1">
 Learner Dashboard
                 </Typography>
-
+                {/* <form onSubmit={handleSearch}>
+                    <label></label>
+                    <input 
+                        type="text"
+                        placeholder="search by name"
+                        value={q}
+                        onChange={(e) => setQ(e.target.value)
+                    }>
+                    </input>
+                    <Button type="submit">search</Button>
+                </form>
+                {results.map((learner)=>(
+                    <LearnerDetail  
+                    key={learner.id}
+                    learnerName = {learner.name}
+                    onUpdateLearner={handleUpdateLearner} 
+                    deleteLearner={deleteLearner}    
+                    learner={learner}           
+                    />
+                ))} */}
                 <NewLearner addNewLearner={addNewLearner}/> 
 
               <Box
