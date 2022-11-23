@@ -12,7 +12,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
      end
 #GET /searchlearners/q
      def search
-      @learners = Learner.where(['name LIKE ?', "%"+ params[:q] +"%"])
+      @learners = Learner.where('name LIKE ?', "%" + params[:q] + "%")
+      render json: @learners
      end
 
    # GET /learners/1
