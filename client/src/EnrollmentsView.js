@@ -5,7 +5,7 @@ function EnrollmentsView ({course, learner, semester}) {
     return(
         <>
         <Card sx={{margin:2}}>
-        <Typography variant="h4" sx={{textAlign:"center", padding:2}}>LearnerID : {learner}, CourseID:{course}, Semester: {semester}</Typography>
+        <Typography variant="h4" sx={{textAlign:"center", padding:2}}>Learner: {learner}, Course:{course}, Semester: {semester}</Typography>
         </Card>
         </>
     )

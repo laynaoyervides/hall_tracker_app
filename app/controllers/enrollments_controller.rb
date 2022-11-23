@@ -6,7 +6,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_resp
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # GET /enrollments
    def index
-    render json: Enrollment.all, status: :ok
+    render json: Enrollment.all, include: ['course', 'learner'], status: :ok
     end
 
     #def index

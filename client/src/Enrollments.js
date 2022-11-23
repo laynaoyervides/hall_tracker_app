@@ -162,7 +162,7 @@ return (
                         <EnrollmentsView 
                             key ={enrollment.id}
                             course={enrollment.course_id}
-                            learner = {enrollment.learner_id}
+                            learner= {enrollment.learner_id}
                             semester = {enrollment.semester}
                         />
                     )

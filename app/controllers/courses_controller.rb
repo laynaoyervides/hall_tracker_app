@@ -42,7 +42,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
     private
     def course_params
-      params.permit(:course_name, :class_period, :instructor_id)
+      params.permit(:course_name, :class_period)
     end
 
     #extract repetitive code where we're finding the course and creating an instance variable
