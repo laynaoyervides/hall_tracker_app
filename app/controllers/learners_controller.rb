@@ -10,6 +10,10 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
        @learners = Learner.all
        render json: @learners
      end
+#GET /searchlearners/q
+     def search
+      @learners = Learner.where(['name LIKE ?', "%"+ params[:q] +"%"])
+     end
 
    # GET /learners/1
    def show
@@ -44,7 +48,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
    # Use callbacks to share common setup or constraints between actions.
    # Only allow a list of trusted parameters through.
    def learner_params
-     params.permit(:name, :admin)
+     params.permit(:name)
    end
 
    def authorize_instructor

@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   resources :learners
   resources :enrollments 
   
-  
-  
   # Defines the root path route ("/")
 #  get "/courses/:id", to: "courses#show"
 
@@ -17,9 +15,8 @@ Rails.application.routes.draw do
 
   get "instructors", to: "instructors#index"
 
+#search routes
+get "/searchlearners", to:"learners#search"
+ 
 
-  Rails.application.routes.draw do
-    # route to test your configuration
-    get '/hello', to: 'application#hello_world'
-  end
 end
