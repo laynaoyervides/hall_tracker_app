@@ -63,7 +63,7 @@ function NewEnrollment ({addNewEnrollment}) {
                      <input
                         id="semester"
                         type="text"
-                        placeholder="Semester"
+                        placeholder="default is Fall"
                         name="semester"
                         value={semester}
                         onChange={(e)=>setSemester(e.target.value)}

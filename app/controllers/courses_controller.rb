@@ -14,15 +14,13 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
 #"/courses/:id" GET courses/1
     def show     
-        render json: @course, include: ['learners']
+        render json: @course, include: ['learners'], status: :ok
     end
 
 #POST course "/courses"
     def create
       course = Course.create!(course_params)
       render json: course, status: :created
-    rescue ActiveRecord::RecordInvalid => e
-      render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
 
     end
 
