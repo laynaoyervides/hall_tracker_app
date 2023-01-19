@@ -2,6 +2,7 @@ class LearnersController < ApplicationController
   
 before_action :confirm_authentication
 before_action :authorize_instructor, only: [:update, :destroy, :create]
+
     
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
@@ -12,7 +13,6 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
      end
 #GET /searchlearners?q=
      def search
-      #byebug
       @learners = Learner.where('name LIKE ?', "%" + params[:q] + "%")
       render json: @learners
      end
@@ -57,6 +57,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
       instructor_can_modify = current_instructor.admin?
       render json: { error: "You don't have permission to perform this action" }, status: :forbidden unless instructor_can_modify
   end
+
 
   def render_unprocessable_entity_response(invalid)
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity

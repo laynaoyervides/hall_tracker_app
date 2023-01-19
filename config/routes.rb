@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
 #search routes
 get "/searchlearners", to:"learners#search"
+
+#search for course by the coursename
+get "/searchcourses", to:"courses#search"
  
 
 end

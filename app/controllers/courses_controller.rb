@@ -11,7 +11,12 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     def index
          render json: Course.all, status: :ok
         end
+#/searchcourses
 
+        def search
+          @courses = Course.where('course_name LIKE ?', '%' + params[:q]+ "%")
+          render json: @courses, status: :ok
+        end
 #"/courses/:id" GET courses/1
     def show     
         render json: @course, include: ['learners'], status: :ok
@@ -40,7 +45,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
     private
     def course_params
-      params.permit(:course_name, :class_period)
+      params.permit(:course_name, :class_period, :instructor_id)
     end
 
     #extract repetitive code where we're finding the course and creating an instance variable

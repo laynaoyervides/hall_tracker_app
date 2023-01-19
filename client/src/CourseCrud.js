@@ -16,15 +16,16 @@ function CourseCrud({instructor}) {
         );
     }, [instructor.id]); */
 
-  
+  useEffect( () => {
         fetch("/me")
         .then ((r) => r.json())
         .then ((coursesArray) => 
             setCourses(
             coursesArray.courses));
+  }, []);
 
 
- 
+ console.log(instructor)
     // Add a new course - CREATE - 
     const addNewCourse= (course) => {
         setCourses([...courses, course]);
