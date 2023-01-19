@@ -14,6 +14,7 @@ import Learners from './Learners';
 import Activity from './Activity';
 import Home from './Home';
 import Landing from './Landing';
+import Data from './Data';
 
 
 function App() {  
@@ -67,7 +68,7 @@ if (instructor.admin) return(
         <Route exact path="/" element={<Home instructor={instructor} setInstructor={setInstructor}/>} />    
         <Route path='/courses' element={<Courses instructor={instructor} />} />
         <Route path="/enrollments" element={<Enrollments />} />
-      
+        <Route path="/data" element={<Data />} />
         <Route path="/learners" element={<Learners />} />
         <Route path="/activity" element={<Activity instructor={instructor}/>} />
 

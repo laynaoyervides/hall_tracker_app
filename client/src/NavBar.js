@@ -76,6 +76,8 @@ function NavBar({instructor, setInstructor}) {
             <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/learners"><Tab label="Learners" value="2"/></Link>
             <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/enrollments"><Tab label="Enrollments" value="3"/></Link>
             <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/activity"><Tab label="Activity" value="4"/></Link>
+            <Link style={{textDecoration: 'none',color: 'black' , padding: '10px'}} to="/data"><Tab label="Data" value="5"/></Link>
+
 
 
         <header>
