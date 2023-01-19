@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :courses 
   resources :learners
   resources :enrollments 
+  resources :activities
   
   # Defines the root path route ("/")
 #  get "/courses/:id", to: "courses#show"
