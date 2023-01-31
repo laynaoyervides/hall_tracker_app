@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
 
     private
    def activity_params 
-    params.permit(:learner_id, :type, :duration, :time_in, :time_out, :notes, :created_at)
+    params.permit(:learner_id, :reason, :duration, :time_in, :time_out, :notes, :created_at)
    end
 
    def find_activity
