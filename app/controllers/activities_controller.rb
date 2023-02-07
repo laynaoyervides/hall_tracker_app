@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with:
 
     def index
-        render json: Activiy.all, status: :ok
+        render json: Activity.all, status: :ok
    end
 
      def show     
@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
 
     private
    def activity_params 
-    params.permit(:learner_id, :reason, :duration, :time_in, :time_out, :notes, :created_at)
+    params.permit(:learner_id, :reason, :duration, :time_in, :time_out, :notes, :created_at, :out_of_class)
    end
 
    def find_activity

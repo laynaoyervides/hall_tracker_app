@@ -1,30 +1,18 @@
 import React, {useState, useEffect}from "react";
-import {Box, Button, FormControl, InputLabel, Select, Typography} from "@mui/material"
+import {Box, Typography} from "@mui/material"
 import CourseList from "./CourseList";
 import LearnerActivity from "./LearnerActivity";
 
 function Activity ({instructor}) {
     const [courses, setCourses] = useState([]);
-    const [course, setCourse] = useState();
-    const [learners, setLearners] =useState([]);
 
- //get list of courses
-/*  useEffect ( ()  => {
-    fetch("/courses")
+
+useEffect ( () => {
+    fetch("/me")
     .then ((r) => r.json())
     .then ((coursesArray) => 
-        setCourses(
-        coursesArray.filter((course)=>course.instructor_id === instructor.id))
-    );
-}, [instructor.id]); */
-
-fetch("/me")
-.then ((r) => r.json())
-.then ((coursesArray) => 
-    setCourses(
-    coursesArray.courses));
-//handle click on Course Card
-
+                    setCourses(coursesArray.courses));
+    }, [])
 
     return (
         <div>
@@ -57,7 +45,8 @@ fetch("/me")
                          key={course.id}
                          course={course}
                          courseName = {course.course_name}
-                         classPeriod={course.class_period}    
+                         classPeriod={course.class_period}  
+                         learners = {course.learners}  
                         />
                         )}
 
